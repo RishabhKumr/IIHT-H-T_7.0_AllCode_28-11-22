@@ -123,3 +123,22 @@ var name = "Rishabh"; //t inside a function hence a Global Function
             const num5=200;
             console.log(num5);
         }
+
+        //Abstraction
+        function dogs(){
+            this.dogName = "Lab";
+            throw new error("this is not a wild dog");
+        }
+
+        dogs.prototype.display = function(){
+            return "this dogs breed is "+this.dogName;
+        }
+        //Constructor function
+        function Animal(dogName){
+            this.dogName = dogName;
+        }
+
+        //Create an Object without using the constructor
+        Animal.prototype=Object.create(dogs.prototype);
+        let tommy = new Animal("German Shepard");
+        console.log(tommy.display());
