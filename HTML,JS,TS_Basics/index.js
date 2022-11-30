@@ -102,3 +102,10 @@ var name = "Rishabh"; //t inside a function hence a Global Function
 
         let allFruits = [ ...fruits, ...seasonalFruits];
         console.log(allFruits);
+
+        let countingnumber=()=>{
+            for(let i=1;i<10;i++){
+                console.log(i);
+            }
+        }
+        countingnumber();
