@@ -109,3 +109,17 @@ var name = "Rishabh"; //t inside a function hence a Global Function
             }
         }
         countingnumber();
+        //var -> this is  a scope of a function it can be re declared
+        var num1 = 1000;
+        console.log(num1);
+
+        // Let keyword -> was announced with ES6, it has blocked scope
+        function addNumber(){
+            let b = 50;
+            console.log(b);
+        }
+        //const -> it stands for constant so its value cannot be chnaged directly
+        function addNumber1(){
+            const num5=200;
+            console.log(num5);
+        }
