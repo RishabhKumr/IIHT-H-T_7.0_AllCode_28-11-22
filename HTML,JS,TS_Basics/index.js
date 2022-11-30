@@ -80,3 +80,25 @@ var name = "Rishabh"; //t inside a function hence a Global Function
         }
         let today = new TodaysDate();
         today.printDate();
+
+        class AppleLaptops {
+            constructor(brand){
+                this.brand="Apple";
+            }
+        }
+        class Macbookpro extends AppleLaptops {
+            constructor(model,processor,ram){
+               super();
+                this.processor=processor;
+                this.model=model;
+                this.ram=ram;
+            }
+        }
+
+        let l1 = new Macbookpro("2021","macbookpro","i7",16)
+        console.log(l1.brand+" "+l1.model+" "+l1.processor+" "+l1.ram);
+        let fruits = ["Apple","Banana"];
+        let seasonalFruits = ["Mango","lichi"];
+
+        let allFruits = [ ...fruits, ...seasonalFruits];
+        console.log(allFruits);
