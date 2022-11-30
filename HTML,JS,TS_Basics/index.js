@@ -52,3 +52,31 @@ var name = "Rishabh"; //t inside a function hence a Global Function
 
         var names = ["rishabh","kumatr"];
         console.log(names);
+        //Let Car = class{ --> Another way to create class
+        class Car {
+            constructor(brand,modelName,price){
+                this.price = price;
+                this.brand = brand;
+                this.modelName = modelName;
+            }
+            print(){
+                console.log(this.brand+" "+this.modelName+" "+this.price);
+            }
+        }
+
+        var C1 = new Car("Mercedes","A Class",400000);
+        var C2 = new Car("BMW","3",5000000);
+        C1.print();
+        C2.print();
+
+        //Class Inheritence
+        class TodaysDate extends Date {
+            constructor(){
+                super();
+            }
+            printDate(){
+                console.log(this.getDate())
+            }
+        }
+        let today = new TodaysDate();
+        today.printDate();
