@@ -142,3 +142,7 @@ var name = "Rishabh"; //t inside a function hence a Global Function
         Animal.prototype=Object.create(dogs.prototype);
         let tommy = new Animal("German Shepard");
         console.log(tommy.display());
+
+        function ColorPicker(){
+            alert("Color picker on next page!!")
+        }
