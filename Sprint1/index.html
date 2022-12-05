@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+    <div id="outerDiv">
+        <div id="innerDiv">
+            <h1 id="reg">Registration</h1>
+            <h3 id="subHeader">Personal Details</h3>
+            <form id="userForm" onsubmit="dataOnConsole()"  action="next.html">
+            <div class="form">
+                <!-- First Divison -->
+                <div class="column">
+                    <label for="name">Full Name</label><br/>
+                    <input id="name" type="text" placeholder="Enter your name" required><br/><br/>
+                    <label for="mobilenumber">Mobile Number</label><br/>
+                    <input id="mobilenumber" type="tel" placeholder="Enter mobile number" pattern="[0-9]{10}" required><br/>
+                    <h3 id="subHeader">Identity Details</h3>
+                    <label for="idtype">ID Type</label><br/>
+                    <input id="idtype" type="text" placeholder="Enter ID type" required><br/><br/>
+                    <label for="issuedate">Issue Date</label><br/>
+                    <input id="issuedate" type="date" placeholder="Enter ID issue date" required><br/><br/>
+                </div>
+                <!-- Second Divison -->
+                <div class="column">
+                    <label for="dob">Date of Birth</label><br/>
+                    <input id="dob" type="date" placeholder="Enter birth date" required><br/><br/>
+                    <label for="gender">Gender</label><br/>
+                    <input id="gender" type="text" placeholder="Enter your gender" required><br/><br/><br/><br/>
+                    <label for="idnumber">ID Number</label><br/>
+                    <input id="idnumber" type="number" placeholder="Enter ID number" required><br/><br/>
+                    <label for="issuestate">Issue State</label><br/>
+                    <input id="issuestate" type="text" placeholder="Enter ID issue state" required><br/>
+                </div>
+                <!-- Third Divison -->
+                <div class="column">
+                    <label for="email">Email</label><br/>
+                    <input id="email" type="email" placeholder="Enter your email" required><br/><br/>
+                    <label for="occupation">Occupation</label><br/>
+                    <input id="occupation" type="text" placeholder="Enter occupation" required><br/><br/><br/><br/>
+                    <label for="issueauth">Issue Authority</label><br/>
+                    <input id="issueauth" type="text" placeholder="Enter issue department" required><br/><br/> 
+                    <label for="expdate">Expiry Date</label><br/>
+                    <input id="expdate" type="date" placeholder="Enter ID expiry date" required><br/>
+                </div>
+            </div>
+            <button id="nextButton" type="submit" form="userForm">Next    →</button>
+            </form>
+        </div>
+    </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

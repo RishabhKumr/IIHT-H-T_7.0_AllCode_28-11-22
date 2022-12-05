@@ -23,4 +23,9 @@ public class Calculator {
 		// TODO Auto-generated method stub
 		return service.add(i,j);
 	}
+
+	public Object performSub(int i, int j) {
+		// TODO Auto-generated method stub
+		return service.sub(i, j);
+	}
 }

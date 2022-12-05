@@ -25,7 +25,7 @@ public class TestCalculator {
 	}
 	@Test
 	public void testSub() {
-		assertEquals(250,c.sub(500, 250));
+		assertEquals(250,c.performSub(500, 250));
 	}
 	@Test
 	public void testMul() {
