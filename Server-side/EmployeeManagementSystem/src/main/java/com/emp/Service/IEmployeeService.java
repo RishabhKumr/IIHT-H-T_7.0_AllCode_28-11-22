@@ -1,5 +1,7 @@
 package com.emp.Service;
 
-public interface IEmployeeService {
+import com.emp.Entity.Employee;
 
+public interface IEmployeeService {
+	Integer saveEmployee(Employee employee);
 }
