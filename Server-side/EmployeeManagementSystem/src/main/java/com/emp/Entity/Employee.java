@@ -16,6 +16,12 @@ public class Employee {
 	private String email;
 	private Integer salary;
 	
+	
+	
+	public Employee() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public Employee(Integer id, String ename, String eposition, String email, Integer salary) {
 		super();
 		this.id = id;
