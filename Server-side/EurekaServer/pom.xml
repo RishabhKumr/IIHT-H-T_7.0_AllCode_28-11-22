@@ -8,24 +8,26 @@
 		<version>2.7.6</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.hr</groupId>
-	<artifactId>HR-service</artifactId>
+	<groupId>comserver</groupId>
+	<artifactId>EurekaServer</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>HR-service</name>
-	<description>Demo project for Spring Boot</description>
+	<name>EurekaServer</name>
+	<description>Digital book project</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
 	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
+		
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -34,7 +36,7 @@
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>
-				spring-cloud-starter-netflix-eureka-client
+				spring-cloud-starter-netflix-eureka-server
 			</artifactId>
 		</dependency>
 	</dependencies>
