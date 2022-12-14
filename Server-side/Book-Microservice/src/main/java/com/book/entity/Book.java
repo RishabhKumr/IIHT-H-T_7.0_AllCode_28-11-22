@@ -1,9 +1,14 @@
 package com.book.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 public class Book {
@@ -12,6 +17,9 @@ public class Book {
 	@GeneratedValue(strategy= GenerationType.AUTO)
 	private int bookId;
 	private String bookTitle;
+	@JsonBackReference
+	@OneToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="authorId")
 	private Author bookAuthor;
 	private String bookCategory;
 	private int bookPrice;
