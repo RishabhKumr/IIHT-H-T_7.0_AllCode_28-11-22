@@ -10,7 +10,9 @@ import { UserFormComponent } from './Components/user-form/user-form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarComponent } from './Components/navbar/navbar.component';
 import { MatListModule } from '@angular/material/list';
-import { MatMenuModule } from '@angular/material/menu'
+import { MatMenuModule } from '@angular/material/menu';
+import { AboutComponent } from './Components/about/about.component';
+import { ContactUsComponent } from './Components/contact-us/contact-us.component'
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { MatMenuModule } from '@angular/material/menu'
     HeaderComponent,
     HomeNewComponent,
     UserFormComponent,
-    NavbarComponent
+    NavbarComponent,
+    AboutComponent,
+    ContactUsComponent
   ],
   imports: [
     BrowserModule,
