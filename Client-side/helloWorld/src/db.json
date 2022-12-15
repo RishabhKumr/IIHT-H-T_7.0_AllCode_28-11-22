@@ -1,0 +1,19 @@
+{
+  "users": [
+    {
+      "firstName": "Emily",
+      "lastname": "Josepg",
+      "age": 50,
+      "email": "kumar@gmail.com",
+      "id": 1
+    },
+    {
+      "firstname": "rishabh",
+      "lastname": "kumar",
+      "age": 25,
+      "gender": "male",
+      "email": "kumar@gmsil.com",
+      "id": 2
+    }
+  ]
+}

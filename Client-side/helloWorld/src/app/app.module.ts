@@ -12,7 +12,8 @@ import { NavbarComponent } from './Components/navbar/navbar.component';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { AboutComponent } from './Components/about/about.component';
-import { ContactUsComponent } from './Components/contact-us/contact-us.component'
+import { ContactUsComponent } from './Components/contact-us/contact-us.component';
+import {HttpClientModule } from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { ContactUsComponent } from './Components/contact-us/contact-us.component
     FormsModule,
     BrowserAnimationsModule,
     MatListModule,
-    MatMenuModule
+    MatMenuModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

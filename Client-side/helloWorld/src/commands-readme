@@ -1,0 +1,7 @@
+//install json serve
+npm i  json-server
+//run json server
+json-server --watch db.json --port 5000 or
+npx json-server --watch db.json --port 5000 
+//Services
+ng g c Service/users
