@@ -7,6 +7,10 @@ import { HomeComponent } from './Components/home/home.component';
 import { HeaderComponent } from './Components/header/header.component';
 import { HomeNewComponent } from './Components/home-new/home-new.component';
 import { UserFormComponent } from './Components/user-form/user-form.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NavbarComponent } from './Components/navbar/navbar.component';
+import { MatListModule } from '@angular/material/list';
+import { MatMenuModule } from '@angular/material/menu'
 
 @NgModule({
   declarations: [
@@ -14,12 +18,16 @@ import { UserFormComponent } from './Components/user-form/user-form.component';
     HomeComponent,
     HeaderComponent,
     HomeNewComponent,
-    UserFormComponent
+    UserFormComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MatListModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]
