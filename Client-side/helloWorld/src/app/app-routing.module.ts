@@ -5,6 +5,7 @@ import { ContactUsComponent } from './Components/contact-us/contact-us.component
 import { HomeComponent } from './Components/home/home.component';
 import { RegUsersComponent } from './Components/reg-users/reg-users.component';
 import { UserFormComponent } from './Components/user-form/user-form.component';
+import { PipesComponent } from './pipes/pipes.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,9 @@ const routes: Routes = [
   },
   {
     path:"reg",component:RegUsersComponent
+  },
+  {
+    path:"pipes",component:PipesComponent
   }
 ];
 

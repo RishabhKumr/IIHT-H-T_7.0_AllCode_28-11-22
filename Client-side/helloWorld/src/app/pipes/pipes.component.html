@@ -1,0 +1,5 @@
+<h2>{{ employee.name | uppercase }}}</h2>
+<h2>{{ employee.BaseSalary | currency:'EUR' }}</h2>
+<h2>Joined on - {{ employee.JoinedOn | date}}</h2>
+<h2>Winning Percentage: {{employee.WinningPercentage | percent}}</h2>
+<p>{{employee.About | ellipsis}}</p>
