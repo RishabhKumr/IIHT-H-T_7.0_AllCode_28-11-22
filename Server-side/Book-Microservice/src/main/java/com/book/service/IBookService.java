@@ -26,4 +26,7 @@ public interface IBookService {
 	public String getAuthorNameByBookId(int bookId);
 	
 	
+	public List<Book> getBookByTitle(String bookTitle);
+	
+	
 }

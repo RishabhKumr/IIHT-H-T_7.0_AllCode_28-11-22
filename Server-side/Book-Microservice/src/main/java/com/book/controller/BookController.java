@@ -108,4 +108,13 @@ public class BookController {
 		String authorName = bookService.getAuthorNameByBookId(bookId);
 		return authorName;
 	}
+	
+	@GetMapping("/title/{bookTitle}")
+	public List<Book> getBookByTitle(@PathVariable String bookTitle){
+		
+	     List<Book> bookList = bookService.getBookByTitle(bookTitle);
+	     return bookList;
+	}
+	
+	
 }
