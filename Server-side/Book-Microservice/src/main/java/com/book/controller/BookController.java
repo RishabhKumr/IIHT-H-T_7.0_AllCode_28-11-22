@@ -14,9 +14,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.book.dto.BookInfodto;
+import com.book.entity.Author;
 import com.book.entity.Book;
 import com.book.repository.IBookInfo;
 import com.book.repository.IBookRepository;
@@ -77,5 +79,15 @@ public class BookController {
 	@PatchMapping("/changeActiveStatus/{id}")
 	public ResponseEntity<Book> updateBookStatus(@PathVariable("id") Integer id,@RequestBody Book book ){
 		return new ResponseEntity<Book>(bookService.updateBookStatus(book, id),HttpStatus.OK);
+	}
+	
+	@GetMapping("/search")
+	public List<Book> getBookByCategoryTitleAuthorPricePublisher(
+			@RequestParam String bookCategory,
+			@RequestParam String bookTitle,
+			@RequestParam int bookPrice,
+			@RequestParam String bookPublisher)
+	{
+		return bookRepo.findByBookCategoryAndBookTitleAndBookPriceAndBookPublisher(bookCategory, bookTitle,bookPrice, bookPublisher);
 	}
 }
