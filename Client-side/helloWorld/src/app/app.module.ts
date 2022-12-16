@@ -16,7 +16,6 @@ import { ContactUsComponent } from './Components/contact-us/contact-us.component
 import {HttpClientModule } from '@angular/common/http';
 import { RegUsersComponent } from './Components/reg-users/reg-users.component';
 import { PipesComponent } from './pipes/pipes.component';
-import { EllipsisComponent } from './pipes/ellipsis/ellipsis.component';
 import { EllipsisPipe } from './pipes/ellipsis.pipe'
 
 @NgModule({
@@ -31,7 +30,6 @@ import { EllipsisPipe } from './pipes/ellipsis.pipe'
     ContactUsComponent,
     RegUsersComponent,
     PipesComponent,
-    EllipsisComponent,
     EllipsisPipe
   ],
   imports: [
