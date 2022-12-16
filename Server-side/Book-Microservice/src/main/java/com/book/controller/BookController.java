@@ -33,6 +33,9 @@ public class BookController {
 	@Autowired
 	private IBookRepository bookRepo;
 	
+	@Autowired
+	private BookInfodto bookInfodto;
+	
 	@PostMapping("/createBook")
 	public String createBook(@RequestBody Book book)
 	{
@@ -48,7 +51,7 @@ public class BookController {
 	}
 	
 	@GetMapping("/getBookInfo/{bookId}")
-	public BookInfodto getBookInfo(@PathVariable Integer bookId){
+	public List<BookInfodto> getBookInfo(@PathVariable Integer bookId){
 		 BookInfodto book = new BookInfodto();
 	     List<IBookInfo> bookList = bookRepo.findByBookId(bookId);
 	     IBookInfo bookInfo = bookList.get(0);
@@ -61,7 +64,9 @@ public class BookController {
 	     book.setBookPrice(bookInfo.getbookPrice());
 	     book.setBookPublisher(bookInfo.getbookPublisher());
 	     book.setBookPublishedDate(bookInfo.getbookPublishedDate());
-	     return book;
+	     List<BookInfodto> booktmp = new ArrayList<>();
+	     booktmp.add(book);
+	     return booktmp;
 	}
 	
 	@GetMapping("/allBooks")
@@ -89,5 +94,18 @@ public class BookController {
 			@RequestParam String bookPublisher)
 	{
 		return bookRepo.findByBookCategoryAndBookTitleAndBookPriceAndBookPublisher(bookCategory, bookTitle,bookPrice, bookPublisher);
+	}
+	
+	@GetMapping("/searchbycategory/{bookCategory}")
+	public List<Book> getBookByCategory(@PathVariable String bookCategory){
+		
+	     List<Book> bookList = bookService.listBookByCategory(bookCategory);
+	     return bookList;
+	}
+	
+	@GetMapping("/getauthorname/{bookId}")
+	public String getBookAuthor(@PathVariable int bookId) {
+		String authorName = bookService.getAuthorNameByBookId(bookId);
+		return authorName;
 	}
 }

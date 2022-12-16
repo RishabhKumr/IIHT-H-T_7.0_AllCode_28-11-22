@@ -4,9 +4,12 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
+import org.springframework.stereotype.Component;
+
 import com.book.entity.Author;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
+@Component
 public class BookInfodto {
 	private int bookId;
 	private String bookTitle;
@@ -18,6 +21,10 @@ public class BookInfodto {
 	private String bookLogo;
 	private String bookDescription;
 
+	public BookInfodto() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public int getBookId() {
 		return bookId;
 	}

@@ -11,6 +11,7 @@ import com.book.dto.BookInfodto;
 import com.book.entity.Author;
 import com.book.entity.Book;
 import com.book.exceptions.BookServiceException;
+import com.book.repository.IBookInfo;
 import com.book.repository.IBookRepository;
 
 @Service
@@ -75,6 +76,20 @@ public class BookServiceImpl implements IBookService{
 		existingBook.setBookActive(book.isBookActive());
 		bookRepository.save(existingBook);
 		return existingBook;
+	}
+
+	@Override
+	public List<Book> listBookByCategory(String bookCategory) {
+		List<Book> bookList = bookRepository.findByBookCategory(bookCategory);
+		return bookList;
+	}
+
+	@Override
+	public String getAuthorNameByBookId(int bookId) {
+		List<IBookInfo> bookInfo = bookRepository.findByBookId(bookId);
+		IBookInfo bookInfoObj = bookInfo.get(0);
+		String authorName = bookInfoObj.getbookAuthor().getAuthorName();
+		return authorName;
 	}
 
 }

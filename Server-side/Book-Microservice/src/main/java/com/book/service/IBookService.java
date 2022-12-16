@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import com.book.dto.BookInfodto;
 import com.book.entity.Book;
+import com.book.repository.IBookInfo;
 
 public interface IBookService {
 	
@@ -19,6 +20,10 @@ public interface IBookService {
 	public Book updateBookContent(Book book,Integer id);
 	
 	public Book updateBookStatus(Book book,Integer id);
+	
+	public List<Book> listBookByCategory(String bookCategory);
+	
+	public String getAuthorNameByBookId(int bookId);
 	
 	
 }
