@@ -9,12 +9,20 @@
       "id": 2
     },
     {
-      "firstname": "rishabh",
+      "firstname": "kamal ",
       "lastname": "kumar",
-      "age": 45,
+      "age": 2,
       "gender": "male",
-      "email": "mb@gmail.com",
+      "email": "bijbkj@gmail.com",
       "id": 3
+    },
+    {
+      "firstname": "kapil",
+      "lastname": "kumar",
+      "age": 4,
+      "gender": "male",
+      "email": "bijbkj@gmail.com",
+      "id": 4
     }
   ]
 }
