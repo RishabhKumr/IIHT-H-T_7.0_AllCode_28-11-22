@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from './Components/about/about.component';
 import { ContactUsComponent } from './Components/contact-us/contact-us.component';
 import { HomeComponent } from './Components/home/home.component';
+import { RegUsersComponent } from './Components/reg-users/reg-users.component';
 import { UserFormComponent } from './Components/user-form/user-form.component';
 
 const routes: Routes = [
@@ -17,6 +18,9 @@ const routes: Routes = [
   },
   {
     path:"contactus",component:ContactUsComponent
+  },
+  {
+    path:"reg",component:RegUsersComponent
   }
 ];
 
