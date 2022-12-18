@@ -7,9 +7,17 @@ import { Observable } from 'rxjs';
 })
 export class BookServiceService {
 
-  createBook(book:Book):Observable<String>{
-    return this.http.post<String>("http://localhost:8083/add",book);
+  createBook(book:Book):Observable<string>{
+    return this.http.post<string>("http://localhost:8083/add",book);
   }
 
   constructor(private http:HttpClient) { }
+
+  getBooks(){
+    return this.http.get("http://localhost:8083/allBooks");
+  }
+
+  deleteUsers(book:Book){
+    return this.http.delete("http://localhost:8083/remove"+"/"+book.bookId);
+  }
 }

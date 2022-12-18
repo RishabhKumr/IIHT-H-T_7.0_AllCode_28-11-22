@@ -2,11 +2,12 @@
     height: 80%;
     width: 100%;
     overflow: hidden;
-    position: absolute;
+    position: fixed;
     text-align: center;
   }
   img {
     max-width: 97%;
+    position: fixed;
   }
   .menu {
     position: absolute;

@@ -1,1 +1,29 @@
-<p>create-book works!</p>
+
+<div id="outer">
+    <h2>Create Your Own Book!</h2>
+    <div id="inner">
+        <form  name="myForm" #myForm="ngForm" #regForm='ngForm' (ngSubmit)='onSubmit(myForm)'>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Title</label>
+              <input name="title" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" [(ngModel)]="book.bookName">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Author</label>
+              <input name="author" type="text" class="form-control" id="exampleInputPassword1"  [(ngModel)]="book.bookAuthor">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Genre</label>
+                <input name="genre" type="text" class="form-control" id="exampleInputPassword1"  [(ngModel)]="book.bookGenre">
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Price</label>
+                <input name="price" type="number" class="form-control" id="exampleInputPassword1"  [(ngModel)]="book.bookPrice">
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Status</label>
+                <input name="status" type="number" class="form-control" id="exampleInputPassword1"  [(ngModel)]="book.bookStatus">
+              </div>
+            <button type="submit" class="btn btn-primary" [disabled]="!regForm.valid">Submit</button>
+          </form>
+    </div>
+</div>
