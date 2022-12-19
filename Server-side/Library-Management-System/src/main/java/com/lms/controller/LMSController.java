@@ -1,5 +1,6 @@
 package com.lms.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -62,9 +63,12 @@ public class LMSController {
 		}
 	
 	@GetMapping("/read/{id}")
-	public Optional<Book> getBookById(@PathVariable Integer id){
-		Optional<Book> book = lmsService.getBook(id);
-		return book;
+	public List<Book> getBookById(@PathVariable Integer id){
+		Optional<Book> bookOps = lmsService.getBook(id);
+		Book book = bookOps.get();
+		List<Book> bookList = new ArrayList<>();
+		bookList.add(book);
+		return bookList;
 	}
 	
 }

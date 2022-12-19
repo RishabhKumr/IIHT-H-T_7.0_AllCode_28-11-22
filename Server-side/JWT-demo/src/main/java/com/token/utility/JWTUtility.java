@@ -2,6 +2,7 @@ package com.token.utility;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 
@@ -21,7 +22,7 @@ public class JWTUtility implements Serializable{
 	
 	//to retieve username from JWT Token
 	public String getUsernameFromToken(String Token) {
-		return getClaimFromToken(token,Claims::getSubject);
+		return getClaimFromToken(Token,Claims::getSubject);
 	}
 	//TO RETIEVE THE EXPIRATION DATE FROM THE TOKEN
 	public Date getExpirationDateFromToken(String token) {
@@ -30,7 +31,7 @@ public class JWTUtility implements Serializable{
 	//
 	
 	private <T> T getClaimFromToken(String token,Function<Claims,T> claimsResolver) {
-		final Claims claims = getAllClaimsFromToken(token);
+		final Claims claims = getAllClaimsFromTokenClaims(token);
 		return claimsResolver.apply(claims);
 	}
 	
@@ -56,6 +57,12 @@ public class JWTUtility implements Serializable{
 		return Jwts.builder().setClaims(claims).setSubject(subject).setIssuedAt(new Date(System.currentTimeMillis()))
 				.setExpiration(new Date(System.currentTimeMillis() + JWT_TOKEN_VALIDITY*1000))
 				.signWith(SignatureAlgorithm.HS256, secretKey).compact();
+	}
+	//validating token
+	public Boolean validateToken(String token,UserDetails userDetails) {
+		final String userName = getUsernameFromToken(token);
+		return (userName.equals(userDetails.getUsername()) && !isTokenExpired(token));
+		
 	}
 
 }
