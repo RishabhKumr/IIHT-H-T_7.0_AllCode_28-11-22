@@ -1,0 +1,4 @@
+npm i bootstrap
+
+--ngrx 
+ng add @ngrx/store/latest
