@@ -9,6 +9,7 @@ import { FooterComponent } from './Components/footer/footer.component';
 import { CreateBookComponent } from './Components/create-book/create-book.component';
 import { GetBooksComponent } from './Components/get-books/get-books.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { SearchBokComponent } from './Components/search-bok/search-bok.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     FooterComponent,
     CreateBookComponent,
     GetBooksComponent,
+    SearchBokComponent,
   ],
   imports: [
     BrowserModule,

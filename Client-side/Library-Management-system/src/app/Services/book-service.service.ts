@@ -20,4 +20,8 @@ export class BookServiceService {
   deleteUsers(book:Book){
     return this.http.delete("http://localhost:8083/remove"+"/"+book.bookId);
   }
+
+  searchBook(id: number){
+    return this.http.get("http://localhost:8083/read/"+id);
+  }
 }
