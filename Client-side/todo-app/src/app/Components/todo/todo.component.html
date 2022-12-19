@@ -1,0 +1,7 @@
+<ol class="list-group list-group-numbered" style="background-color: black; border-color: chartreuse; padding-left: 150px;
+padding-right:150px; padding-top: 50px; padding-bottom: 500px;">
+    <li class="list-group-item" *ngFor="let todo of todos; let i = index">{{todo.title}}
+    <button (click)="removeTodo(i)" style="margin-left: 750px;" type="button" class="btn btn-danger">Delete</button>
+    </li>
+
+  </ol>
