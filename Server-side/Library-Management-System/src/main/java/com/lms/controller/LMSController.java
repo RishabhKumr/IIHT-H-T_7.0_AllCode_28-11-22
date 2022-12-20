@@ -63,12 +63,12 @@ public class LMSController {
 		}
 	
 	@GetMapping("/read/{id}")
-	public List<Book> getBookById(@PathVariable Integer id){
+	public Book getBookById(@PathVariable Integer id){
 		Optional<Book> bookOps = lmsService.getBook(id);
 		Book book = bookOps.get();
-		List<Book> bookList = new ArrayList<>();
-		bookList.add(book);
-		return bookList;
+//		List<Book> bookList = new ArrayList<>();
+//		bookList.add(book);
+		return book;
 	}
 	
 }
