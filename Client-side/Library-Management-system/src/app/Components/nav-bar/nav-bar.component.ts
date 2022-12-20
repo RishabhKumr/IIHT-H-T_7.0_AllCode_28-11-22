@@ -16,5 +16,6 @@ export class NavBarComponent implements OnInit {
   saveQueryToSessionStorage(f:NgForm){
     sessionStorage.setItem("query",String(this.book));
     this.router.navigate(['/result'])
+    f.resetForm();
   }
 }

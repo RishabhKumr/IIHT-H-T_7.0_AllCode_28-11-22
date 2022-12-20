@@ -9,6 +9,8 @@ import {Book} from 'src/app/Entity/Book';
 })
 export class SearchBokComponent implements OnInit {
   book:any;
+  bookName:string="";
+  bookAuthor:string="";
   constructor(private bookService:BookServiceService) { }
 
   ngOnInit(): void {

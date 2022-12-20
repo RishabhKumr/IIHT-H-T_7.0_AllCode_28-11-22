@@ -1,29 +1,39 @@
 
-<div id="outer">
-    <h2>Create Your Own Book!</h2>
-    <div id="inner">
+<div id="outer" style="width: 50%; border-radius: 5px; border-color: 
+#f2ad18; background-color: #f5cf7d; margin-left: 375px;  border-style: double; margin-top: 25px;">
+    <h2 style="padding-left: 180px;"><b>Create your own book!</b></h2>
+    <div id="inner" style="padding-left: 30px;">
         <form  name="myForm" #myForm="ngForm" #regForm='ngForm' (ngSubmit)='onSubmit(myForm)'>
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">Title</label>
-              <input name="title" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" [(ngModel)]="book.bookName">
+              <input name="title" type="text" required
+              placeholder="Enter Book Title" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" [(ngModel)]="book.bookName">
             </div>
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label">Author</label>
-              <input name="author" type="text" class="form-control" id="exampleInputPassword1"  [(ngModel)]="book.bookAuthor">
+              <input name="author" type="text" required
+              placeholder="Enter Book Author" class="form-control" id="exampleInputPassword1"  [(ngModel)]="book.bookAuthor">
             </div>
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Genre</label>
-                <input name="genre" type="text" class="form-control" id="exampleInputPassword1"  [(ngModel)]="book.bookGenre">
+                <input name="genre" type="text"  required
+                placeholder="Enter Book Genre" class="form-control" id="exampleInputPassword1"  [(ngModel)]="book.bookGenre">
               </div>
-              <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Price</label>
-                <input name="price" type="number" class="form-control" id="exampleInputPassword1"  [(ngModel)]="book.bookPrice">
-              </div>
+              <label for="exampleInputPassword1" class="form-label">Price</label>
+              <div class="input-group mb-3" style="width: 400px;">
+                <span class="input-group-text">$</span>
+                <input name="price" type="number" class="form-control" aria-label="Amount (to the nearest dollar)" required
+                placeholder="Enter Book Price" [(ngModel)]="book.bookPrice">
+                <span class="input-group-text">.00</span>
+              </div>              
               <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Status</label>
-                <input name="status" type="number" class="form-control" id="exampleInputPassword1"  [(ngModel)]="book.bookStatus">
+                <input name="status" type="number" class="form-control" id="exampleInputPassword1" required
+                placeholder="Enter Book Status"  [(ngModel)]="book.bookStatus">
               </div>
-            <button type="submit" class="btn btn-primary" [disabled]="!regForm.valid">Submit</button>
+            <button type="submit" class="btn btn-primary" [disabled]="!regForm.valid" style="margin-bottom: 10px; background-color: black;">Submit</button>
+            <br>
+            
           </form>
     </div>
 </div>
