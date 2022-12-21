@@ -27,6 +27,7 @@ import com.user.payload.response.JwtResponse;
 import com.user.payload.response.MessageResponse;
 import com.user.repository.RoleRepository;
 import com.user.repository.UserRepository;
+import com.user.service.SendEmail;
 import com.user.service.UserDetailsImpl;
 import com.user.utility.JwtUtils;
 
@@ -48,6 +49,9 @@ public class AuthController {
 
   @Autowired
   JwtUtils jwtUtils;
+  
+  @Autowired
+  SendEmail sendEmail;
 
   @PostMapping("/signin")
   public ResponseEntity<?> authenticateUser( @RequestBody LoginRequest loginRequest) {
@@ -88,8 +92,9 @@ public class AuthController {
     User user = new User(signUpRequest.getUsername(), 
                signUpRequest.getEmail(),
                encoder.encode(signUpRequest.getPassword()));
-
-    Set<String> strRoles = signUpRequest.getRole();
+    Set<String> tmpRoles = new HashSet<>();
+    tmpRoles.add(signUpRequest.getRole());
+    Set<String> strRoles = tmpRoles;
     Set<Role> roles = new HashSet<>();
     System.out.println(strRoles);
     if (strRoles.isEmpty()) {
@@ -123,9 +128,10 @@ public class AuthController {
         }
       });
     }
-
+    String info = ""+user.getUsername()+"Congratulations!, You have been registered with Digital book. Enjoy Learnings!";
     user.setRoles(roles);
     userRepository.save(user);
+    sendEmail.mailer(user.getEmail(),info);
 
     return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
   }
