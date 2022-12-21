@@ -1,4 +1,5 @@
 npm i bootstrap
+npm install ngx-bootstrap bootstrap --save
 
 --ngrx 
 ng add @ngrx/store/latest
