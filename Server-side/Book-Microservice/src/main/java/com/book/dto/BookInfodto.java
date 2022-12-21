@@ -20,10 +20,27 @@ public class BookInfodto {
 	private String bookPublishedDate;
 	private String bookLogo;
 	private String bookDescription;
-
+	private String bookContent;
+	private boolean bookActive;
 	public BookInfodto() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+	public BookInfodto(int bookId, String bookTitle, String bookAuthor, String bookCategory, int bookPrice,
+			String bookPublisher, String bookPublishedDate, String bookLogo, String bookDescription, String bookContent,
+			boolean bookActive) {
+		super();
+		this.bookId = bookId;
+		this.bookTitle = bookTitle;
+		this.bookAuthor = bookAuthor;
+		this.bookCategory = bookCategory;
+		this.bookPrice = bookPrice;
+		this.bookPublisher = bookPublisher;
+		this.bookPublishedDate = bookPublishedDate;
+		this.bookLogo = bookLogo;
+		this.bookDescription = bookDescription;
+		this.bookContent = bookContent;
+		this.bookActive = bookActive;
 	}
 	public int getBookId() {
 		return bookId;
@@ -78,6 +95,18 @@ public class BookInfodto {
 	}
 	public void setBookDescription(String bookDescription) {
 		this.bookDescription = bookDescription;
+	}
+	public String getBookContent() {
+		return bookContent;
+	}
+	public void setBookContent(String bookContent) {
+		this.bookContent = bookContent;
+	}
+	public boolean isBookActive() {
+		return bookActive;
+	}
+	public void setBookActive(boolean bookActive) {
+		this.bookActive = bookActive;
 	}
 	
 	

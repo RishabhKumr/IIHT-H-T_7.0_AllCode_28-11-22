@@ -36,10 +36,10 @@ public class BookController {
 	@Autowired
 	private BookInfodto bookInfodto;
 	
-	@PostMapping("/createBook")
-	public String createBook(@RequestBody Book book)
+	@PostMapping("/createBook/{authorId}")
+	public String createBook(@PathVariable int authorId,@RequestBody BookInfodto book)
 	{
-		String bookName = bookService.createBook(book);
+		String bookName = bookService.createBook(book,authorId);
 		System.out.println(bookName);
 		return bookName;
 	}
@@ -77,8 +77,8 @@ public class BookController {
 	}
 	
 	@PutMapping("/updateBook/{id}")
-	public ResponseEntity<Book> updateBookByAuthor(@PathVariable("id") Integer id, @RequestBody Book book) {
-		return new ResponseEntity<Book>(bookService.updateBookContent(book, id),HttpStatus.OK);
+	public String updateBookByAuthor(@PathVariable("id") Integer id, @RequestBody BookInfodto book) {
+		return bookService.updateBookContent(book, id);
 	}
 	
 	@PatchMapping("/changeActiveStatus/{id}")

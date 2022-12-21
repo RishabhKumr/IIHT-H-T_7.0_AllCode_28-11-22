@@ -22,15 +22,29 @@ public class BookServiceImpl implements IBookService{
 	IBookRepository bookRepository;
 	
 	@Override
-	public String createBook(Book book) {
-		Book createBook = null;
+	public String createBook(BookInfodto book, int id) {
+		Book existingBook = new Book();
+		Author author = new Author();
+		author.setAuthorId(id);
+		System.out.println(author.getAuthorId());
 		try {
-		createBook = bookRepository.save(book);
+			existingBook.setBookTitle(book.getBookTitle());
+			existingBook.setBookActive(book.isBookActive());
+			existingBook.setBookCategory(book.getBookCategory());
+			existingBook.setBookContent(book.getBookContent());
+			existingBook.setBookDescription(book.getBookDescription());
+			existingBook.setBookLogo(book.getBookLogo());
+			existingBook.setBookPrice(book.getBookPrice());
+			existingBook.setBookPublishedDate(book.getBookPublishedDate());
+			existingBook.setBookPublisher(book.getBookPublisher());
+			System.out.println(existingBook.getBookTitle());
+			existingBook.setBookAuthor(author);
+		    existingBook= bookRepository.save(existingBook);
 		}
 		catch(Exception ex) {
 			throw new BookServiceException("Book creation Failed!");
 		}
-		return createBook.getBookTitle()+" Created!";
+		return existingBook.getBookTitle()+" Created!";
 	}
 
 	@Override
@@ -45,28 +59,25 @@ public class BookServiceImpl implements IBookService{
 	}
 
 	@Override
-	public Book updateBookContent(Book book, Integer id) {
+	public String updateBookContent(BookInfodto book, Integer id) {
+		String status="Not able to update book, Kindly check logs!";
 		Book existingBook = bookRepository.findById(id).orElseThrow(
 				()-> new com.book.exceptions.ResourceNotFoundExceptionHandler("Book","id",id));
-		if(existingBook.getBookAuthor().getAuthorId() == book.getBookAuthor().getAuthorId()) {
-		existingBook.setBookId(book.getBookId());
-		existingBook.setBookTitle(book.getBookTitle());
-		existingBook.setBookAuthor(book.getBookAuthor());
-		existingBook.setBookContent(book.getBookContent());
-		existingBook.setBookCategory(book.getBookCategory());
-		existingBook.setBookActive(book.isBookActive());
-		existingBook.setBookDescription(book.getBookDescription());
-		existingBook.setBookLogo(book.getBookLogo());
-		existingBook.setBookPrice(book.getBookPrice());
-		existingBook.setBookPublisher(book.getBookPublisher());
-		existingBook.setBookPublishedDate(book.getBookPublishedDate());
-		bookRepository.save(existingBook);
-		}
-		else
-		{
-			throw new BookServiceException("Updation Failed");
-		}
-		return existingBook;
+		if(existingBook!=null) {
+			existingBook.setBookTitle(book.getBookTitle());
+			existingBook.setBookActive(book.isBookActive());
+			existingBook.setBookCategory(book.getBookCategory());
+			existingBook.setBookContent(book.getBookContent());
+			existingBook.setBookDescription(book.getBookDescription());
+			existingBook.setBookLogo(book.getBookLogo());
+			existingBook.setBookPrice(book.getBookPrice());
+			existingBook.setBookPublishedDate(book.getBookPublishedDate());
+			existingBook.setBookPublisher(book.getBookPublisher());
+			existingBook.setBookId(book.getBookId());
+			bookRepository.save(existingBook);
+			status="Updated Book '"+existingBook.getBookTitle()+"'";
+			}
+			return status;
 		
 	}
 
