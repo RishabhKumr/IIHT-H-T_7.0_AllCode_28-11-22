@@ -17,4 +17,8 @@ export class UserService {
   getUserBoard(): Observable<any> {
     return this.http.get(API_URL + 'admin', { responseType: 'text' });
   }
+
+  getAllBook():Observable<any>{
+    return this.http.get(API_URL+"all", { responseType: 'text' });
+  }
 }

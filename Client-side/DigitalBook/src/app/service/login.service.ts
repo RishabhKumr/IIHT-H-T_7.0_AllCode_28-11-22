@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { RegisterUser } from '../entity/registerUser';
 const api = "http://localhost:8081/api/auth";
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -19,12 +20,7 @@ export class LoginService {
     }
     , httpOptions);
   }
-  register(username: string, email: string, password: string, role:any): Observable<any> {
-    return this.httpClient.post(api + '/signup', {
-      username,
-      email,
-      password,
-      role
-    }, httpOptions);
+  register(register:RegisterUser): Observable<any> {
+    return this.httpClient.post(api + '/signup', register, httpOptions);
   }
 }

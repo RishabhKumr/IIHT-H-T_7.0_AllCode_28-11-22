@@ -1,33 +1,33 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from 'src/app/service/login.service';
-
+import { RegisterUser } from 'src/app/entity/registerUser';
+import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  form: any = {
-    username: null,
-    email: null,
-    password: null,
-    role:null
-  };
+  register = new RegisterUser();
+  // form: any = {
+  //   username: null,
+  //   email: null,
+  //   password: null,
+  // };
   isSuccessful = false;
   isSignUpFailed = false;
   errorMessage = '';
   
-  role:string="";
+
   constructor(private authService: LoginService) { }
 
   ngOnInit(): void {
   }
-  onSubmit(): void {
-    const { username, email, password,role  } = this.form;
+  onSubmit(f:NgForm): void {
     
-    console.log(role)
-    console.log(username);
-    this.authService.register(username, email, password,role).subscribe(
+    console.log(this.register.role)
+    console.log(this.register.username);
+    this.authService.register(this.register).subscribe(
       data => {
         console.log(data);
         this.isSuccessful = true;

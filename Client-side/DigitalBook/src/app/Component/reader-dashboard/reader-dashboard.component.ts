@@ -8,7 +8,7 @@ import { UserService } from 'src/app/service/user.service';
 export class ReaderDashboardComponent implements OnInit {
 
   content?: string;
-
+  content1?:string;
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
@@ -22,5 +22,12 @@ export class ReaderDashboardComponent implements OnInit {
         this.content = JSON.parse(err.error).message;
       }
     );
+
+    this.userService.getAllBook().subscribe(
+      data => {
+        console.log(data);
+        this.content1 = data;
+      }
+    )
     }
 }
