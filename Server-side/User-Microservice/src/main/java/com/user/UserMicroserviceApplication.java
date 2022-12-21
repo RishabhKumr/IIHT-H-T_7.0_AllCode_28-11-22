@@ -13,10 +13,10 @@ public class UserMicroserviceApplication {
 		SpringApplication.run(UserMicroserviceApplication.class, args);
 	}
 	
-	@Bean
-	public PasswordEncoder passwordEncoder() {
-		return NoOpPasswordEncoder.getInstance();
-	}
+//	@Bean
+//	public PasswordEncoder passwordEncoder() {
+//		return NoOpPasswordEncoder.getInstance();
+//	}
 	
 
 }
