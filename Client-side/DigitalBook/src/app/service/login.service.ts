@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http';
-import { JwtRequest } from '../entity/JwtRequest';
 import { Observable } from 'rxjs';
 const api = "http://localhost:8081/api/auth";
 const httpOptions = {
@@ -20,5 +19,12 @@ export class LoginService {
     }
     , httpOptions);
   }
-
+  register(username: string, email: string, password: string, role:any): Observable<any> {
+    return this.httpClient.post(api + '/signup', {
+      username,
+      email,
+      password,
+      role
+    }, httpOptions);
+  }
 }

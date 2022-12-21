@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { JwtRequest } from 'src/app/entity/JwtRequest';
 import { LoginService } from 'src/app/service/login.service';
 import { NgModel } from '@angular/forms';
 import { NgForm } from '@angular/forms';

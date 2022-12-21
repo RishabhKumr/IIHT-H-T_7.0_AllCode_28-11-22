@@ -8,13 +8,15 @@ import { AppComponent } from './app.component';
 import { ReaderLoginComponent } from './Component/reader-login/reader-login.component';
 import { ReaderDashboardComponent } from './Component/reader-dashboard/reader-dashboard.component';
 import { ProfileComponent } from './Component/profile/profile.component';
+import { RegisterComponent } from './Component/register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ReaderLoginComponent,
     ReaderDashboardComponent,
-    ProfileComponent
+    ProfileComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
