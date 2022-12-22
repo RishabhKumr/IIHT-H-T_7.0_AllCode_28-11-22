@@ -24,6 +24,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.user.dto.SubscriptionMapperDto;
 import com.user.entity.book.Book;
+import com.user.service.IBlockService;
 import com.user.service.ISubscriptionService;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -35,6 +36,9 @@ public class TestController {
 	
 	@Autowired
 	ISubscriptionService subscriptionService;
+	
+	@Autowired
+	IBlockService blockService;
 	
   @GetMapping("/all")
   public List<Book> allAccess() {
@@ -143,5 +147,15 @@ public class TestController {
   @PostMapping("/getsubscriptionid")
   public int getSubscriptionId(@RequestBody SubscriptionMapperDto subscriber) {
 	  return subscriptionService.getSubscriptionIdbyUserIdBookId(subscriber.getUserId(), subscriber.getBookId());
+  }
+  
+  @PostMapping("/addblock")
+  public String blockBook(@RequestBody SubscriptionMapperDto subscriber) {
+	 return blockService.addBlock(subscriber.getUserId(), subscriber.getBookId());
+  }
+  
+  @PostMapping("/isblocked")
+  public boolean checkBookBlock(@RequestBody SubscriptionMapperDto subscriber) {
+	  return blockService.getBooksByUserIdBookId(subscriber.getUserId(), subscriber.getBookId());
   }
 }

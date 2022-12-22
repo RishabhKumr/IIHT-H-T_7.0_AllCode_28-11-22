@@ -53,6 +53,5 @@ public class SubscriptionServiceImpl implements ISubscriptionService{
 		return subscriberObj.getSubscriptionId();
 	}
 	
-	
 
 }
