@@ -7,20 +7,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+
+import com.user.dto.SubscriptionMapperDto;
 import com.user.entity.book.Book;
+import com.user.service.ISubscriptionService;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -28,6 +32,9 @@ import com.user.entity.book.Book;
 public class TestController {
 	@Autowired
 	private RestTemplate restTemplate;
+	
+	@Autowired
+	ISubscriptionService subscriptionService;
 	
   @GetMapping("/all")
   public List<Book> allAccess() {
@@ -118,5 +125,23 @@ public class TestController {
 	  String url = "http://localhost:8082/book/getbookContent/"+bookTitle;
 	  String content = this.restTemplate.getForObject(url, String.class);
 	  return content;
+  }
+  
+  @PostMapping("/subscribe/create")
+  public Integer createSubscription(@RequestBody SubscriptionMapperDto subscriptionRequest)
+  {
+	  int id = subscriptionService.createSubcription(subscriptionRequest.getUserId(), subscriptionRequest.getBookId());
+	  Integer subscriptionId = Integer.valueOf(id);
+	  return subscriptionId;
+  }
+  
+  @DeleteMapping("/unsubscribe/{id}")
+  public String deleteSubscription(@PathVariable int  id) {
+	  return subscriptionService.deleteSubscripton(id);
+  }
+  
+  @PostMapping("/getsubscriptionid")
+  public int getSubscriptionId(@RequestBody SubscriptionMapperDto subscriber) {
+	  return subscriptionService.getSubscriptionIdbyUserIdBookId(subscriber.getUserId(), subscriber.getBookId());
   }
 }
