@@ -1,0 +1,494 @@
+{
+	"info": {
+		"_postman_id": "bec5496e-46f1-4cc0-a2d4-6ef5b2fdd3e6",
+		"name": "UserMicroService",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Reader",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"readerName\":\"Rishabh\",\r\n    \"readerEmail\":\"kumarrishabh201@gmail.com\",\r\n    \"readerPassword\":\"12345\",\r\n    \"readerAge\":24,\r\n    \"readerNumber\":\"8077619658\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/addreader",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"addreader"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create author",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"authorName\":\"Saurabh\",\r\n    \"authorEmail\":\"saurabh15094@gmail.com\",\r\n    \"authorPassword\":\"12345\",\r\n    \"authorNumber\":\"7031819324\",\r\n    \"authorAge\":24\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/author/addauthor",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"author",
+						"addauthor"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Token generation",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"admin\",\r\n    \"password\":\"password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/auth",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"auth"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validation",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY3MTU3MzI5NCwiaWF0IjoxNjcxNTU1Mjk0fQ.f3A8ex6vVX_tBSk673HzVcijegTTreruLlsOuVEVG6WBGgia2NcKkYgidfONX1SYJR4_Emq9qqpg5y0hcyghQQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all books",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY3MTU3MzI5NCwiaWF0IjoxNjcxNTU1Mjk0fQ.f3A8ex6vVX_tBSk673HzVcijegTTreruLlsOuVEVG6WBGgia2NcKkYgidfONX1SYJR4_Emq9qqpg5y0hcyghQQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get book by title",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY3MTU3MzI5NCwiaWF0IjoxNjcxNTU1Mjk0fQ.f3A8ex6vVX_tBSk673HzVcijegTTreruLlsOuVEVG6WBGgia2NcKkYgidfONX1SYJR4_Emq9qqpg5y0hcyghQQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get book by title Copy",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY3MTU3MzI5NCwiaWF0IjoxNjcxNTU1Mjk0fQ.f3A8ex6vVX_tBSk673HzVcijegTTreruLlsOuVEVG6WBGgia2NcKkYgidfONX1SYJR4_Emq9qqpg5y0hcyghQQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get book all details by id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY3MTU3MzI5NCwiaWF0IjoxNjcxNTU1Mjk0fQ.f3A8ex6vVX_tBSk673HzVcijegTTreruLlsOuVEVG6WBGgia2NcKkYgidfONX1SYJR4_Emq9qqpg5y0hcyghQQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/test/getAllBookDetails/9",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"test",
+						"getAllBookDetails",
+						"9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get book info --content null",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY3MTU3MzI5NCwiaWF0IjoxNjcxNTU1Mjk0fQ.f3A8ex6vVX_tBSk673HzVcijegTTreruLlsOuVEVG6WBGgia2NcKkYgidfONX1SYJR4_Emq9qqpg5y0hcyghQQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/test/getBookInfo/9",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"test",
+						"getBookInfo",
+						"9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "search book by book category",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY3MTU3MzI5NCwiaWF0IjoxNjcxNTU1Mjk0fQ.f3A8ex6vVX_tBSk673HzVcijegTTreruLlsOuVEVG6WBGgia2NcKkYgidfONX1SYJR4_Emq9qqpg5y0hcyghQQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "search book by params",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY3MTU3MzI5NCwiaWF0IjoxNjcxNTU1Mjk0fQ.f3A8ex6vVX_tBSk673HzVcijegTTreruLlsOuVEVG6WBGgia2NcKkYgidfONX1SYJR4_Emq9qqpg5y0hcyghQQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get author name by bookId Copy",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY3MTU3MzI5NCwiaWF0IjoxNjcxNTU1Mjk0fQ.f3A8ex6vVX_tBSk673HzVcijegTTreruLlsOuVEVG6WBGgia2NcKkYgidfONX1SYJR4_Emq9qqpg5y0hcyghQQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "signup",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"Rishabh\",\r\n    \"password\":\"password\",\r\n    \"email\":\"kumarrishabh201@gmail.com\",\r\n    \"role\":[\"ROLE_READER\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/auth/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"auth",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update book by author id",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"bookId\":3,\r\n    \"bookTitle\":\"Gandhi Stories\",\r\n    \"bookCategory\":\"Study\",\r\n    \"bookPrice\":178,\r\n    \"bookPublisher\":\"MGH\",\r\n    \"bookPublishedDate\":\"26-02-2626\",\r\n    \"bookLogo\":\"logo\",\r\n    \"bookDescription\":\"desc\",\r\n    \"bookContent\":\"Content\",\r\n    \"bookActive\":true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/test/admin/updateBook/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"test",
+						"admin",
+						"updateBook",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Signin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"Rishabh\",\r\n    \"password\":\"password\",\r\n    \"email\":\"kumarrishabh201@gmail.com\",\r\n    \"role\":[\"ROLE_READER\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/auth/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"auth",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Subscribe by Userid bookId",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "unsubscribe by subsid",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "get subscription id",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "block book",
+			"request": {
+				"method": "POST",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "is book blocked?",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,178 @@
+{
+	"info": {
+		"_postman_id": "48314b26-e848-4c5e-9531-dae978ed774d",
+		"name": "Book Microservice",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "create Book (createBook)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"bookTitle\":\"Gandhi lifestories\",\r\n    \"bookAuthor\":\"rishabh\",\r\n    \"bookCategory\":\"Study\",\r\n    \"bookPrice\":101,\r\n    \"bookPublisher\":\"MGH\",\r\n    \"bookPublishedDate\":\"26-02-2626\",\r\n    \"bookLogo\":\"logo\",\r\n    \"bookDescription\":\"desc\",\r\n    \"bookContent\":\"Content\",\r\n    \"bookActive\":false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8083/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get book all details (getBookAllDetails)",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "getBookInfo",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "List all book info (listAllBookInfo)",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Update book by Author",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"bookTitle\":\"Gandhi Stories\",\r\n    \"bookCategory\":\"Study\",\r\n    \"bookAuthor\":{\r\n        \"authorId\":1\r\n        },\r\n    \"bookPrice\":1878,\r\n    \"bookPublisher\":\"MGH\",\r\n    \"bookPublishedDate\":\"26-02-2626\",\r\n    \"bookLogo\":\"logo\",\r\n    \"bookDescription\":\"desc\",\r\n    \"bookContent\":\"Content\",\r\n    \"bookActive\":true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/updateBook/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"updateBook",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Change Book Active Status",
+			"request": {
+				"method": "PATCH",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Search book /search --> findByCategoryPrice titleAuthorPublisher",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081"
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "search books by category",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/searchbycategory/Study",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"searchbycategory",
+						"Study"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get authorName by book id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/getauthorname/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"getauthorname",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get book by title",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "add author",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
