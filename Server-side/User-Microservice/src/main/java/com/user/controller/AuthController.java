@@ -6,6 +6,10 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -17,7 +21,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
+import com.user.dto.AuthorDto;
 import com.user.entity.ERole;
 import com.user.entity.Role;
 import com.user.entity.User;
@@ -52,6 +58,9 @@ public class AuthController {
   
   @Autowired
   SendEmail sendEmail;
+  
+  @Autowired
+  RestTemplate restTemplate;
 
   @PostMapping("/signin")
   public ResponseEntity<?> authenticateUser( @RequestBody LoginRequest loginRequest) {
@@ -118,6 +127,17 @@ public class AuthController {
           Role modRole = roleRepository.findByName(ERole.ROLE_AUTHOR)
               .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
           roles.add(modRole);
+          String rolefordto = "ROLE_AUTHOR";
+          String url = "http://localhost:8082/book/addauthor";
+          AuthorDto authorDto = new AuthorDto();
+          authorDto.setAuthorName(user.getUsername());
+          authorDto.setAuthorEmail(user.getEmail());
+          authorDto.setAuthorPassword(user.getPassword());
+          authorDto.setAuthorRole(rolefordto);
+          HttpHeaders headers = new HttpHeaders();
+        	headers.setContentType(MediaType.APPLICATION_JSON);
+       	    HttpEntity entity = new HttpEntity(authorDto,headers);
+        	ResponseEntity<String> status = this.restTemplate.exchange(url, HttpMethod.POST,entity, String.class);
 
           break;
         default:
@@ -130,8 +150,20 @@ public class AuthController {
     }
     String info = ""+user.getUsername()+"Congratulations!, You have been registered with Digital book. Enjoy Learnings!";
     user.setRoles(roles);
-    userRepository.save(user);
-    sendEmail.mailer(user.getEmail(),info);
+//    if(rolefordto.equals("ROLE_AUTHOR")) {
+//    	AuthorDto authorDto = new AuthorDto();
+//        authorDto.setAuthorName(user.getUsername());
+//        authorDto.setAuthorEmail(user.getEmail());
+//        authorDto.setAuthorPassword(user.getPassword());
+//        authorDto.setAuthorRole(rolefordto);
+//        HttpHeaders headers = new HttpHeaders();
+//    	headers.setContentType(MediaType.APPLICATION_JSON);
+//    	HttpEntity entity = new HttpEntity(authorDto,headers);
+//    	ResponseEntity<String> status = this.restTemplate.exchange(url, HttpMethod.PUT,entity, String.class);
+//    }
+   
+	userRepository.save(user);
+   // sendEmail.mailer(user.getEmail(),info);
 
     return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
   }

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.book.dto.BookInfodto;
+import com.book.entity.Author;
 import com.book.entity.Book;
 import com.book.repository.IBookInfo;
 import com.book.repository.IBookRepository;
@@ -116,5 +117,15 @@ public class BookController {
 	     return bookList;
 	}
 	
+	@GetMapping("/getbookContent/{bookTitle}")
+	public String getBookContentByTitle(@PathVariable String bookTitle) {
+		return bookService.getBookContentById(bookTitle);
+	}
+	
+	@PostMapping("/addauthor")
+	public ResponseEntity<?> addAuthor(@RequestBody Author author){
+		 bookService.createAuthor(author);
+		 return ResponseEntity.ok("Author registered with book service!->C");
+	}
 	
 }

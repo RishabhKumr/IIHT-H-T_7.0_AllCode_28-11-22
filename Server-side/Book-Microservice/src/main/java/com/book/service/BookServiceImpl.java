@@ -1,17 +1,17 @@
 package com.book.service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.book.dto.BookInfodto;
 import com.book.entity.Author;
 import com.book.entity.Book;
 import com.book.exceptions.BookServiceException;
-import com.book.repository.IBookContent;
+import com.book.repository.IAuthorRepository;
 import com.book.repository.IBookInfo;
 import com.book.repository.IBookRepository;
 
@@ -20,6 +20,9 @@ public class BookServiceImpl implements IBookService{
 	
 	@Autowired
 	IBookRepository bookRepository;
+	
+	@Autowired
+	IAuthorRepository authorRepository;
 	
 	@Override
 	public String createBook(BookInfodto book, int id) {
@@ -111,5 +114,19 @@ public class BookServiceImpl implements IBookService{
 		return bookList;
 		
 	}
+
+	@Override
+	public String getBookContentById(String bookTitle) {
+		List<Book> book = bookRepository.findByBookTitle(bookTitle);
+		return book.get(0).getBookContent();
+	}
+
+	@Override
+	public ResponseEntity<?> createAuthor(Author author) {
+		authorRepository.save(author);
+		return ResponseEntity.ok("Author registered with book service!");
+	}
+	
+	
 
 }

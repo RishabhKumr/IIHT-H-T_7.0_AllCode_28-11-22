@@ -3,11 +3,11 @@ package com.book.service;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.data.jpa.repository.Query;
+import org.springframework.http.ResponseEntity;
 
 import com.book.dto.BookInfodto;
+import com.book.entity.Author;
 import com.book.entity.Book;
-import com.book.repository.IBookInfo;
 
 public interface IBookService {
 	
@@ -27,6 +27,10 @@ public interface IBookService {
 	
 	
 	public List<Book> getBookByTitle(String bookTitle);
+	
+	public String getBookContentById(String bookTitle);
+	
+	public ResponseEntity<?> createAuthor(Author author);
 	
 	
 }

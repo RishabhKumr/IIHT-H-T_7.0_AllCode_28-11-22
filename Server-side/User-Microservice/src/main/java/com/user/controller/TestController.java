@@ -113,4 +113,10 @@ public class TestController {
 	  return book;
   }
   
+  @GetMapping("/getbookcontent/{bookTitle}")
+  public String getBookContentByTitle(@PathVariable String  bookTitle) {
+	  String url = "http://localhost:8082/book/getbookContent/"+bookTitle;
+	  String content = this.restTemplate.getForObject(url, String.class);
+	  return content;
+  }
 }

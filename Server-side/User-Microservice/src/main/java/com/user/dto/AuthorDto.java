@@ -1,30 +1,16 @@
-package com.book.entity;
+package com.user.dto;
 
-import java.util.List;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
-@Entity
-public class Author {
-	
-	@Id
-	@GeneratedValue(strategy= GenerationType.AUTO)
+public class AuthorDto {
 	private int authorId;
 	private String authorName;
 	private String authorEmail;
 	private String authorPassword;
 	private String authorRole;
-	public Author() {
+	public AuthorDto() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Author(int authorId, String authorName, String authorEmail, String authorPassword, String authorRole) {
+	public AuthorDto(int authorId, String authorName, String authorEmail, String authorPassword, String authorRole) {
 		super();
 		this.authorId = authorId;
 		this.authorName = authorName;
@@ -62,10 +48,6 @@ public class Author {
 	public void setAuthorRole(String authorRole) {
 		this.authorRole = authorRole;
 	}
-
 	
 	
-	
-	
-
 }
