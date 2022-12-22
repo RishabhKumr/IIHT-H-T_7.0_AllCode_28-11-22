@@ -16,11 +16,13 @@ export class ReaderLoginComponent implements OnInit {
     username: null,
     password: null
   };
+  isReader=false;
+  isAuthor=true;
   isLoggedIn = false;
   isLoginFailed = false;
   errorMessage = '';
   roles: string[] = [];
-
+  useRole:string="";
   constructor(private authService: LoginService, private tokenStorage: TokenStorageService,private router: Router) { }
 
   ngOnInit(): void {
@@ -41,11 +43,19 @@ export class ReaderLoginComponent implements OnInit {
         console.log(data);
         this.isLoginFailed = false;
         this.isLoggedIn = true;
+        
         this.roles = this.tokenStorage.getUser().roles;
-        console.log(".......<<>>......");
-        console.log(this.roles);
+        
         this.reloadPage();
-        //this.router.navigate(['/readerdashboard']);
+        this.isReader = this.roles.includes('ROLE_READER');
+        this.isAuthor = this.roles.includes('ROLE_AUTHOR');
+        if(this.isReader){
+          this.reloadPage();
+        this.router.navigate(['readerdashboard']);
+        }
+        if(this.isAuthor){
+          this.router.navigate(['authordashboard']);
+        }
       },
       err => {
         this.errorMessage = err.error.message;
@@ -56,6 +66,10 @@ export class ReaderLoginComponent implements OnInit {
 
   reloadPage(): void {
     window.location.reload();
+  }
+
+  info(){
+    alert("Please login as Guest user to register!");
   }
 
 }

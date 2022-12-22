@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { TokenStorageService } from 'src/app/service/token-storage.service';
 import { UserService } from 'src/app/service/user.service';
 @Component({
   selector: 'app-reader-dashboard',
@@ -9,10 +11,12 @@ export class ReaderDashboardComponent implements OnInit {
 
   content?: string;
   content1?:string;
-  constructor(private userService: UserService) { }
+  isLoggedIn = false;
+  constructor(private userService: UserService,private tokenStorage:TokenStorageService,private router:Router) { }
 
   ngOnInit(): void {
-    
+    this.isLoggedIn = !!this.tokenStorage.getToken();
+    if(this.isLoggedIn){
     this.userService.getUserBoard().subscribe(
       data => {
         console.log(data);
@@ -30,4 +34,8 @@ export class ReaderDashboardComponent implements OnInit {
       }
     )
     }
+    else{
+      this.router.navigate(['']);
+    }
+  }
 }

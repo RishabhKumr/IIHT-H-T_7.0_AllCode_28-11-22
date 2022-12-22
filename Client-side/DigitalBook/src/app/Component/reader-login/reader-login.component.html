@@ -1,20 +1,36 @@
-<form *ngIf="!isLoggedIn"
-name="form"
-(ngSubmit)="f.form.valid && onSubmit()"
-#f="ngForm"
-novalidate>
-    <div class="mb-3">
-      <label for="exampleInputEmail1" class="form-label">Email address</label>
-      <input name="username" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" [(ngModel)]="form.username">
-      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+<app-home-navbar></app-home-navbar>
+<div>
+  <div class="box-form">
+    <div class="left">
+      <div class="overlay">
+        <h1>Hola! User.</h1>
+        <p>User will be redirected to page based on its role.
+          Author and Reader have separate workspaces.</p>
+        <span>
+          <p>login with social media</p>
+          <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+          <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i> Login with Twitter</a>
+        </span>
+      </div>
     </div>
-    <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">Password</label>
-      <input name="password" type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="form.password">
+
+
+    <div class="right">
+      <h5>Login</h5>
+      <p>Don't have an account? <a name="create" (click)="info()" style="color: rgb(102, 100, 100);"><b><u>Create Your
+              Account</u></b></a> it takes less than a minute</p>
+      <form *ngIf="!isLoggedIn" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+        <div class="inputs">
+          <input name="username" placeholder="Username" type="text" class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp" [(ngModel)]="form.username">
+          <br>
+          <input name="password" placeholder="Password" type="text" class="form-control" id="exampleInputPassword1"
+            [(ngModel)]="form.password">
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary">Login</button>
+      </form>
     </div>
-    <div class="mb-3 form-check">
-      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-      <label class="form-check-label" for="exampleCheck1">Check me out</label>
-    </div>
-    <button type="submit"  class="btn btn-primary">Submit</button>
-</form>
+
+  </div>
+</div>

@@ -9,6 +9,10 @@ import { ReaderLoginComponent } from './Component/reader-login/reader-login.comp
 import { ReaderDashboardComponent } from './Component/reader-dashboard/reader-dashboard.component';
 import { ProfileComponent } from './Component/profile/profile.component';
 import { RegisterComponent } from './Component/register/register.component';
+import { HeaderAppComponent } from './Component/header-app/header-app.component';
+import { HomeComponent } from './Component/home/home.component';
+import { HomeNavbarComponent } from './Component/home-navbar/home-navbar.component';
+import { AuthorDashboardComponent } from './Component/author-dashboard/author-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +20,11 @@ import { RegisterComponent } from './Component/register/register.component';
     ReaderLoginComponent,
     ReaderDashboardComponent,
     ProfileComponent,
-    RegisterComponent
+    RegisterComponent,
+    HeaderAppComponent,
+    HomeComponent,
+    HomeNavbarComponent,
+    AuthorDashboardComponent
   ],
   imports: [
     BrowserModule,
