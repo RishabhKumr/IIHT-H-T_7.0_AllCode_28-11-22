@@ -32,11 +32,15 @@ export class RegisterComponent implements OnInit {
         console.log(data);
         this.isSuccessful = true;
         this.isSignUpFailed = false;
+        f.resetForm();
+        alert(" Registered Successfully!");
       },
       err => {
         this.errorMessage = err.error.message;
         this.isSignUpFailed = true;
       }
     );
+   
+  
   }
 }

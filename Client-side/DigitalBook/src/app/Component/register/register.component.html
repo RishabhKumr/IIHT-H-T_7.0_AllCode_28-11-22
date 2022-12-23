@@ -1,34 +1,33 @@
+<app-home-navbar></app-home-navbar>
+<div class="user">
+  <header class="user__header">
+      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3219/logo.svg" alt="" />
+      <h1 class="user__title">New Here?</h1>
+      <h2 style="color:white; padding-top: 10px;">Register youself to enjoy reading!</h2>
+  </header>
+  
+  <form class="form" name="myForm" #myForm="ngForm" #regForm='ngForm' (ngSubmit)='onSubmit(myForm)'>
+      <div class="form__group">
+        <input name="username" type="text" required
+        placeholder="Username" class="form__input" id="exampleInputPassword1"  [(ngModel)]="register.username">
+      </div>
+      
+      <div class="form__group">
+        <input name="password" type="text" required
+        placeholder="Password" class="form__input" id="exampleInputPassword1"  [(ngModel)]="register.password">
+      </div>
+      
+      <div class="form__group">
+        <input name="email" type="text" required
+        placeholder="Emailr" class="form__input" id="exampleInputPassword1"  [(ngModel)]="register.email">
+      </div>
 
-<div id="outer" style="width: 50%; border-radius: 5px; border-color: 
-#f2ad18; background-color: #f5cf7d; margin-left: 375px;  border-style: double; margin-top: 25px;">
-    <h2 style="padding-left: 180px;"><b>Create your own book!</b></h2>
-    <div id="inner" style="padding-left: 30px;">
-        <form  name="myForm" #myForm="ngForm" #regForm='ngForm' (ngSubmit)='onSubmit(myForm)'>
-            
-            <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label">Username</label>
-              <input name="author" type="text" required
-              placeholder="Enter Book Author" class="form-control" id="exampleInputPassword1"  [(ngModel)]="register.username">
-            </div>
-            <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label">password</label>
-              <input name="password" type="text" required
-              placeholder="Enter Book Author" class="form-control" id="exampleInputPassword1"  [(ngModel)]="register.password">
-            </div>
-            <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label">email</label>
-              <input name="email" type="text" required
-              placeholder="Enter Book Author" class="form-control" id="exampleInputPassword1"  [(ngModel)]="register.email">
-            </div>
-            <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label">role</label>
-              <input name="role" type="text" required
-              placeholder="Enter Book Author" class="form-control" id="exampleInputPassword1"  [(ngModel)]="register.role">
-            </div>
-            
-            <button type="submit" class="btn btn-primary" [disabled]="!regForm.valid" style="margin-bottom: 10px; background-color: black;">Submit</button>
-            <br>
-            
-          </form>
-    </div>
+      <div class="form__group">
+        <input name="roler" type="text" required
+        placeholder="Role" class="form__input" id="exampleInputPassword1"  [(ngModel)]="register.role">
+      </div>
+      
+      <button type="submit" class="btn btn-primary" [disabled]="!regForm.valid" style="margin-bottom: 10px; background-color: black;">Submit</button>
+  </form>
 </div>
+<app-navbr></app-navbr>

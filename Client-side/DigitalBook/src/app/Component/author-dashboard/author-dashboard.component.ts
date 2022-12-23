@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Book } from 'src/app/entity/Book';
+import { BookInfo } from 'src/app/entity/BookInfo';
 import { TokenStorageService } from 'src/app/service/token-storage.service';
 import { UserService } from 'src/app/service/user.service';
 
@@ -12,7 +13,7 @@ import { UserService } from 'src/app/service/user.service';
 export class AuthorDashboardComponent implements OnInit {
 
   content?: string;
-  books:Book[] = [];
+  books:BookInfo[] = [];
   isLoggedIn = false;
   constructor(private userService: UserService, private tokenStorage: TokenStorageService, private router: Router) { }
 

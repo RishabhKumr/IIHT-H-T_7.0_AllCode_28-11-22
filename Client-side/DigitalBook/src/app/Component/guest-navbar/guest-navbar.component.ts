@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TokenStorageService } from 'src/app/service/token-storage.service';
 
 @Component({
   selector: 'app-guest-navbar',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GuestNavbarComponent implements OnInit {
 
-  constructor() { }
+  username:string;
+  constructor(private tokenStorage:TokenStorageService) { }
 
   ngOnInit(): void {
+    const user = this.tokenStorage.getUser();
+    this.username = user.username;
   }
-
+  logout(): void {
+    this.tokenStorage.signOut();
+    window.location.reload();
+  }
 }
