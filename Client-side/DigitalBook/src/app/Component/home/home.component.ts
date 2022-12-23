@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
 
   startIndex = 0;
-  constructor() { }
+  constructor(private router:Router) { }
   ImageData = ["/assets/img1.jpg","/assets/img2.jpg","/assets/img3.jpg"];
   ngOnInit(): void {
     this.Repeat();
@@ -40,5 +41,9 @@ export class HomeComponent implements OnInit {
       slide.style.display = 'block';
       this.startIndex++;
     }
+  }
+  guestRedirect(){
+    alert("Login Credentials (guest,password)");
+    
   }
 }
