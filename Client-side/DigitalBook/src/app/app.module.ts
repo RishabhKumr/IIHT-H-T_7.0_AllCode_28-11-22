@@ -19,6 +19,8 @@ import { AuthorNavbarComponent } from './Component/author-navbar/author-navbar.c
 import { ReaderNavbarComponent } from './Component/reader-navbar/reader-navbar.component';
 import { GuestNavbarComponent } from './Component/guest-navbar/guest-navbar.component';
 import { AllBooksComponent } from './Component/all-books/all-books.component';
+import { GuestHomeComponent } from './Component/guest-home/guest-home.component';
+import { GuestSearchComponent } from './Component/guest-search/guest-search.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { AllBooksComponent } from './Component/all-books/all-books.component';
     AuthorNavbarComponent,
     ReaderNavbarComponent,
     GuestNavbarComponent,
-    AllBooksComponent
+    AllBooksComponent,
+    GuestHomeComponent,
+    GuestSearchComponent
   ],
   imports: [
     BrowserModule,

@@ -21,4 +21,6 @@ export class UserService {
   getAllBook(){
     return this.http.get(API_URL+"all");
   }
+
+  
 }

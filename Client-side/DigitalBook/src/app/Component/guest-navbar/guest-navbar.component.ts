@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { TokenStorageService } from 'src/app/service/token-storage.service';
 
 @Component({
@@ -9,8 +11,8 @@ import { TokenStorageService } from 'src/app/service/token-storage.service';
 export class GuestNavbarComponent implements OnInit {
 
   username:string;
-  constructor(private tokenStorage:TokenStorageService) { }
-
+  constructor(private tokenStorage:TokenStorageService,private router:Router) { }
+  book:any;
   ngOnInit(): void {
     const user = this.tokenStorage.getUser();
     this.username = user.username;
@@ -18,5 +20,11 @@ export class GuestNavbarComponent implements OnInit {
   logout(): void {
     this.tokenStorage.signOut();
     window.location.reload();
+  }
+
+  saveQueryToSessionStorage(f:NgForm){
+    sessionStorage.setItem("query",String(this.book));
+    this.router.navigate(['guestdashboard/search']);
+    f.resetForm();
   }
 }
