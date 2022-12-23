@@ -25,6 +25,7 @@ export class GetBooksComponent implements OnInit {
     promise.subscribe((response) => {
       console.log(Response);
       this.books = response as Book[];
+      console.log(this.books);
     })
   }
 }

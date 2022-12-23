@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthorDashboardComponent } from './Component/author-dashboard/author-dashboard.component';
+import { GuestDashboardComponent } from './Component/guest-dashboard/guest-dashboard.component';
 import { HomeComponent } from './Component/home/home.component';
 import { ProfileComponent } from './Component/profile/profile.component';
 import { ReaderDashboardComponent } from './Component/reader-dashboard/reader-dashboard.component';
@@ -28,6 +29,9 @@ const routes: Routes = [
   },
   {
     path:"authordashboard",component:AuthorDashboardComponent
+  },
+  {
+    path:"guestdashboard",component:GuestDashboardComponent
   }
 ];
 

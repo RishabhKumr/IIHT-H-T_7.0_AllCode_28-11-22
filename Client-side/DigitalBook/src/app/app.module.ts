@@ -13,6 +13,12 @@ import { HeaderAppComponent } from './Component/header-app/header-app.component'
 import { HomeComponent } from './Component/home/home.component';
 import { HomeNavbarComponent } from './Component/home-navbar/home-navbar.component';
 import { AuthorDashboardComponent } from './Component/author-dashboard/author-dashboard.component';
+import { NavbrComponent } from './Component/navbr/navbr.component';
+import { GuestDashboardComponent } from './Component/guest-dashboard/guest-dashboard.component';
+import { AuthorNavbarComponent } from './Component/author-navbar/author-navbar.component';
+import { ReaderNavbarComponent } from './Component/reader-navbar/reader-navbar.component';
+import { GuestNavbarComponent } from './Component/guest-navbar/guest-navbar.component';
+import { AllBooksComponent } from './Component/all-books/all-books.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +30,13 @@ import { AuthorDashboardComponent } from './Component/author-dashboard/author-da
     HeaderAppComponent,
     HomeComponent,
     HomeNavbarComponent,
-    AuthorDashboardComponent
+    AuthorDashboardComponent,
+    NavbrComponent,
+    GuestDashboardComponent,
+    AuthorNavbarComponent,
+    ReaderNavbarComponent,
+    GuestNavbarComponent,
+    AllBooksComponent
   ],
   imports: [
     BrowserModule,

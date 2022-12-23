@@ -5,11 +5,11 @@ import { TokenStorageService } from 'src/app/service/token-storage.service';
 import { UserService } from 'src/app/service/user.service';
 
 @Component({
-  selector: 'app-author-dashboard',
-  templateUrl: './author-dashboard.component.html',
-  styleUrls: ['./author-dashboard.component.css']
+  selector: 'app-guest-dashboard',
+  templateUrl: './guest-dashboard.component.html',
+  styleUrls: ['./guest-dashboard.component.css']
 })
-export class AuthorDashboardComponent implements OnInit {
+export class GuestDashboardComponent implements OnInit {
 
   content?: string;
   books:Book[] = [];

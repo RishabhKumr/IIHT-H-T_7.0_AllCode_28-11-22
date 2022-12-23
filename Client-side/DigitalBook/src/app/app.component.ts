@@ -15,7 +15,7 @@ export class AppComponent {
   showAdminBoard = false;
   showModeratorBoard = false;
   username?: string;
-
+  showGuest = false;
   constructor(private tokenStorageService: TokenStorageService,private router:Router) { }
 
   ngOnInit(): void {
@@ -27,11 +27,15 @@ export class AppComponent {
 
       this.showAdminBoard = this.roles.includes('ROLE_READER');
       this.showModeratorBoard = this.roles.includes('ROLE_AUTHOR');
+      this.showGuest = this.roles.includes('ROLE_GUEST');
       if(this.showAdminBoard == true){
         this.router.navigate(['readerdashboard']);
       }
       if(this.showModeratorBoard== true){
         this.router.navigate(['authordashboard']);
+      }
+      if(this.showGuest){
+        this.router.navigate(['guestdashboard']);
       }
       this.username = user.username;
     }
