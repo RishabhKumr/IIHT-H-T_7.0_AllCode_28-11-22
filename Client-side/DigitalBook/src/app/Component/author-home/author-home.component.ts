@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BookInfo } from 'src/app/entity/BookInfo';
 import { SubscribeEntity } from 'src/app/entity/SubscribeEntity';
+import { AuthorService } from 'src/app/service/author.service';
 import { SubscriptionService } from 'src/app/service/subscription.service';
 import { TokenStorageService } from 'src/app/service/token-storage.service';
 import { UserService } from 'src/app/service/user.service';
@@ -15,7 +16,8 @@ export class AuthorHomeComponent implements OnInit {
   userId:number;
   bookId:number;
   errorMessage='';
-  constructor(private userService: UserService, private tokenStorage: TokenStorageService, private router: Router,private subscriptionService:SubscriptionService) { }
+  authorName:string;
+  constructor(private userService: UserService,private authorService:AuthorService, private tokenStorage: TokenStorageService, private router: Router,private subscriptionService:SubscriptionService) { }
   books:BookInfo[] = [];
   ngOnInit(): void {
     const promise = this.userService.getAllBook();

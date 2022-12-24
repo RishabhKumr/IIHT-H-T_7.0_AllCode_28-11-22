@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Book } from 'src/app/entity/Book';
 import { BookInfo } from 'src/app/entity/BookInfo';
 import { SubscribeEntity } from 'src/app/entity/SubscribeEntity';
 import { SubscriptionService } from 'src/app/service/subscription.service';
@@ -18,12 +19,12 @@ export class ReaderSubscriptionComponent implements OnInit {
   message:string;
   errorMessage='';
   constructor(private userService: UserService,private tokenStorage:TokenStorageService,private subscriptionService:SubscriptionService) { }
-  books:BookInfo[] = [];
+  books:Book[] = [];
   ngOnInit(): void {
     console.log(this.tokenStorage.getUser().id);
     const promise = this.subscriptionService.getSubscribedBook(this.tokenStorage.getUser().id);
     promise.subscribe((response) => {
-      this.books = response as BookInfo[];
+      this.books = response as Book[];
       console.log(this.books);
     });
   }
@@ -49,5 +50,11 @@ export class ReaderSubscriptionComponent implements OnInit {
     })
     
       alert("Please check for Subscription Status!");
+  }
+
+  readBook(b:Book){
+    console.log("bookContent");
+    window.open(String(b.bookContent),"_blank");
+    
   }
 }

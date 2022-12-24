@@ -25,9 +25,9 @@
           <a class="nav-link" (click)="logout()">Logout</a>
         </li>
       </ul>
-      <form class="d-flex"  >
-        <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search" name="inputSearch">
-        <button class="btn btn-outline-success" type="submit" >Search</button>
+      <form class="d-flex"  #regForm='ngForm' name="myForm" #myForm="ngForm" (ngSubmit)="saveQueryToSessionStorage(myForm)">
+        <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search" name="inputSearch"  [(ngModel)]="book">
+        <button class="btn btn-outline-success" type="submit"  [disabled]="!regForm.valid">Search</button>
       </form>
     </div>
   </div>

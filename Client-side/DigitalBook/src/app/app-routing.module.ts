@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthorCreateBookComponent } from './Component/author-create-book/author-create-book.component';
 import { AuthorDashboardComponent } from './Component/author-dashboard/author-dashboard.component';
 import { AuthorHomeComponent } from './Component/author-home/author-home.component';
+import { AuthorSearchComponent } from './Component/author-search/author-search.component';
 import { AuthorSubscriptionComponent } from './Component/author-subscription/author-subscription.component';
 import { AuthorUpdateBookComponent } from './Component/author-update-book/author-update-book.component';
 import { GuestDashboardComponent } from './Component/guest-dashboard/guest-dashboard.component';
@@ -13,6 +14,7 @@ import { ProfileComponent } from './Component/profile/profile.component';
 import { ReaderDashboardComponent } from './Component/reader-dashboard/reader-dashboard.component';
 import { ReaderHomeComponent } from './Component/reader-home/reader-home.component';
 import { ReaderLoginComponent } from './Component/reader-login/reader-login.component';
+import { ReaderSearchComponent } from './Component/reader-search/reader-search.component';
 import { ReaderSubscriptionComponent } from './Component/reader-subscription/reader-subscription.component';
 import { RegisterComponent } from './Component/register/register.component';
 
@@ -34,6 +36,9 @@ const routes: Routes = [
       },
       {
         path:'subscribedbooks',component:ReaderSubscriptionComponent
+      },
+      {
+        path:'search',component:ReaderSearchComponent
       }
     ]
   },
@@ -54,6 +59,9 @@ const routes: Routes = [
       },
       {
         path:'updatebook',component:AuthorUpdateBookComponent
+      },
+      {
+        path:'search',component:AuthorSearchComponent
       }
     ]
   },

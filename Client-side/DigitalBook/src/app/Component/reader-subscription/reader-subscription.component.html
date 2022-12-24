@@ -17,7 +17,7 @@
             <p><span>Price - </span>
                 {{b.bookPrice | currency:'EUR'}}
             </p>
-            <p><button type="button" class="btn btn-success">Read</button> &nbsp; <button type="button" class="btn btn-success" (click)="unsubscribeMethod(b)">Unsubscribe</button></p>
+            <p><button type="button" class="btn btn-success" (click)="readBook(b)">Read Book</button> &nbsp; <button type="button" class="btn btn-success" (click)="unsubscribeMethod(b)">Unsubscribe</button></p>
         </li>
     </ul>
 </div>

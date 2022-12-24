@@ -11,4 +11,8 @@ export class SearchService {
   getBookByTitle(title:String){
     return this.http.get(API_URL+"search/"+title);
   }
+
+  getBookByCategory(category:String){
+    return this.http.get(API_URL+"searchbycategory/"+category);
+  }
 }

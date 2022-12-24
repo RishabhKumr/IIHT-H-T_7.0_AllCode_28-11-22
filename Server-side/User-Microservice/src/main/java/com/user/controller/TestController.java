@@ -1,5 +1,7 @@
 package com.user.controller;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -198,9 +200,21 @@ public class TestController {
   @PostMapping("/createbook/{authorId}")
   public ResponseEntity createBook(@PathVariable int authorId,@RequestBody Book book) {
 	    String url = "http://localhost:8082/book/createBook"+"/"+authorId;
+	    Book bookObj = new Book();
+	    bookObj.setBookTitle(book.getBookTitle());
+	    bookObj.setBookPublisher(book.getBookPublishedDate());
+	    bookObj.setBookActive(true);
+	    bookObj.setBookCategory(book.getBookCategory());
+	    bookObj.setBookContent(book.getBookContent());
+	    bookObj.setBookDescription(book.getBookDescription());
+	    bookObj.setBookLogo(book.getBookLogo());
+	    bookObj.setBookPrice(book.getBookPrice());
+	    String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
+	    bookObj.setBookPublishedDate(timeStamp);
+	    
 	    HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
-		HttpEntity entity = new HttpEntity(book,headers);
+		HttpEntity entity = new HttpEntity(bookObj,headers);
 		ResponseEntity<String> status = this.restTemplate.exchange(url, HttpMethod.POST,entity, String.class);
 		return status;
   }

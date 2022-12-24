@@ -1,5 +1,7 @@
 import { Token } from '@angular/compiler/src/ml_parser/tokens';
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { TokenStorageService } from 'src/app/service/token-storage.service';
 
 @Component({
@@ -10,7 +12,7 @@ import { TokenStorageService } from 'src/app/service/token-storage.service';
 export class ReaderNavbarComponent implements OnInit {
 
   username:string;
-  constructor(private tokenStorage:TokenStorageService) { }
+  constructor(private tokenStorage:TokenStorageService,private router:Router) { }
 
   ngOnInit(): void {
     const user = this.tokenStorage.getUser();
@@ -19,5 +21,15 @@ export class ReaderNavbarComponent implements OnInit {
   logout(): void {
     this.tokenStorage.signOut();
     window.location.reload();
+  }
+  book:any;
+  saveQueryToSessionStorage(f:NgForm){
+    sessionStorage.setItem("query",String(this.book));
+    this.router.navigate(['readerdashboard/search']);
+    f.resetForm();
+  }
+  
+  onselected(value:string){
+    sessionStorage.setItem("type",value);
   }
 }
