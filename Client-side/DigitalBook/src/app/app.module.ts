@@ -21,6 +21,15 @@ import { GuestNavbarComponent } from './Component/guest-navbar/guest-navbar.comp
 import { AllBooksComponent } from './Component/all-books/all-books.component';
 import { GuestHomeComponent } from './Component/guest-home/guest-home.component';
 import { GuestSearchComponent } from './Component/guest-search/guest-search.component';
+import { ReaderSearchComponent } from './Component/reader-search/reader-search.component';
+import { ReaderSubscriptionComponent } from './Component/reader-subscription/reader-subscription.component';
+import { AuthorSearchComponent } from './Component/author-search/author-search.component';
+import { AuthorCreateBookComponent } from './Component/author-create-book/author-create-book.component';
+import { AuthorSubscriptionComponent } from './Component/author-subscription/author-subscription.component';
+import { AuthorUpdateBookComponent } from './Component/author-update-book/author-update-book.component';
+import { ReaderHomeComponent } from './Component/reader-home/reader-home.component';
+import { AuthorHomeComponent } from './Component/author-home/author-home.component';
+
 
 @NgModule({
   declarations: [
@@ -40,7 +49,15 @@ import { GuestSearchComponent } from './Component/guest-search/guest-search.comp
     GuestNavbarComponent,
     AllBooksComponent,
     GuestHomeComponent,
-    GuestSearchComponent
+    GuestSearchComponent,
+    ReaderSearchComponent,
+    ReaderSubscriptionComponent,
+    AuthorSearchComponent,
+    AuthorCreateBookComponent,
+    AuthorSubscriptionComponent,
+    AuthorUpdateBookComponent,
+    ReaderHomeComponent,
+    AuthorHomeComponent
   ],
   imports: [
     BrowserModule,

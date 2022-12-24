@@ -1,13 +1,19 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthorCreateBookComponent } from './Component/author-create-book/author-create-book.component';
 import { AuthorDashboardComponent } from './Component/author-dashboard/author-dashboard.component';
+import { AuthorHomeComponent } from './Component/author-home/author-home.component';
+import { AuthorSubscriptionComponent } from './Component/author-subscription/author-subscription.component';
+import { AuthorUpdateBookComponent } from './Component/author-update-book/author-update-book.component';
 import { GuestDashboardComponent } from './Component/guest-dashboard/guest-dashboard.component';
 import { GuestHomeComponent } from './Component/guest-home/guest-home.component';
 import { GuestSearchComponent } from './Component/guest-search/guest-search.component';
 import { HomeComponent } from './Component/home/home.component';
 import { ProfileComponent } from './Component/profile/profile.component';
 import { ReaderDashboardComponent } from './Component/reader-dashboard/reader-dashboard.component';
+import { ReaderHomeComponent } from './Component/reader-home/reader-home.component';
 import { ReaderLoginComponent } from './Component/reader-login/reader-login.component';
+import { ReaderSubscriptionComponent } from './Component/reader-subscription/reader-subscription.component';
 import { RegisterComponent } from './Component/register/register.component';
 
 const routes: Routes = [
@@ -21,13 +27,35 @@ const routes: Routes = [
     ]
   },
   {
-    path:"readerdashboard",component:ReaderDashboardComponent
+    path:"readerdashboard",component:ReaderDashboardComponent,
+    children:[
+      {
+        path:'',component:ReaderHomeComponent
+      },
+      {
+        path:'subscribedbooks',component:ReaderSubscriptionComponent
+      }
+    ]
   },
   { 
     path: 'profile', component: ProfileComponent
    },
   {
-    path:"authordashboard",component:AuthorDashboardComponent
+    path:"authordashboard",component:AuthorDashboardComponent,
+    children:[
+      {
+        path:'',component:AuthorHomeComponent
+      },
+      {
+        path:'subscribedbooks',component:AuthorSubscriptionComponent
+      },
+      {
+        path:'createbook',component:AuthorCreateBookComponent
+      },
+      {
+        path:'updatebook',component:AuthorUpdateBookComponent
+      }
+    ]
   },
   {
     path:"guestdashboard",component:GuestDashboardComponent,

@@ -28,11 +28,6 @@ export class ReaderDashboardComponent implements OnInit {
           this.content = JSON.parse(err.error).message;
         }
       );
-      const promise = this.userService.getAllBook();
-      promise.subscribe( (response) => {
-          this.books = response as Book[];
-          console.log(this.books);
-        });
     }
     else {
       this.router.navigate(['']);

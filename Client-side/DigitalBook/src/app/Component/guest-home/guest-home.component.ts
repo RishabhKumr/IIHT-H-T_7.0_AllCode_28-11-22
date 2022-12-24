@@ -21,4 +21,7 @@ export class GuestHomeComponent implements OnInit {
       });
   }
 
+  onReadClick(){
+    alert("Please register to enjoy reading!");
+  }
 }

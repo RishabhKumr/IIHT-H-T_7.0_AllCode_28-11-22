@@ -21,7 +21,7 @@ export class CreateBookComponent implements OnInit {
     this.bookService.createBook(this.book).subscribe(data=>{
       this.bookName = data;
     })
-    f.resetForm();
+    //f.resetForm();
     alert("Book "+this.bookName+" Created Successfully!");
   }
   

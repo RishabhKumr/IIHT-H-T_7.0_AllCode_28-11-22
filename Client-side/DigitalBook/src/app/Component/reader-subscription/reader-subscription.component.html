@@ -1,7 +1,7 @@
 <div class="outer">
     <h3
         style="background-color: black; color: burlywood; text-align: center; padding-top: 5px;border-bottom:1px solid burlywood;">
-        Explore Available Books
+        My Subscribed Books
     </h3>
    
     <ul class="tilesWrap">
@@ -17,7 +17,7 @@
             <p><span>Price - </span>
                 {{b.bookPrice | currency:'EUR'}}
             </p>
-            <button type="button" class="btn btn-success" (click)="onReadClick()">Read</button>
+            <p><button type="button" class="btn btn-success">Read</button> &nbsp; <button type="button" class="btn btn-success" (click)="unsubscribeMethod(b)">Unsubscribe</button></p>
         </li>
     </ul>
 </div>
