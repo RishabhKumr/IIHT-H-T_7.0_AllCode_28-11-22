@@ -11,5 +11,6 @@ import com.user.entity.Subscription;
 public interface ISubscriptionRepository extends JpaRepository<Subscription,Integer>{
 	
 	public List<Subscription> findByUserIdAndBookId(int userId,int bookId);
+	public List<Subscription> findByUserId(int userId);
 
 }

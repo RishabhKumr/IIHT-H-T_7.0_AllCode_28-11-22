@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.book.dto.BookInfodto;
 import com.book.entity.Author;
 import com.book.entity.Book;
+import com.book.repository.IAuthorRepository;
 import com.book.repository.IBookInfo;
 import com.book.repository.IBookRepository;
 import com.book.service.IBookService;
@@ -36,6 +37,9 @@ public class BookController {
 	
 	@Autowired
 	private BookInfodto bookInfodto;
+	
+	@Autowired
+	private IAuthorRepository authorRepo;
 	
 	@PostMapping("/createBook/{authorId}")
 	public String createBook(@PathVariable int authorId,@RequestBody BookInfodto book)
@@ -127,5 +131,18 @@ public class BookController {
 		 bookService.createAuthor(author);
 		 return ResponseEntity.ok("Author registered with book service!->C");
 	}
+	@GetMapping("/getbookid/{bookTitle}")
+	public Integer getBookIdByTitleUpdate(@PathVariable String bookTitle){
+		
+	     List<Book> bookList = bookService.getBookByTitle(bookTitle);
+	     Integer id = bookList.get(0).getBookId();
+	     return id;
+	}
 	
+	@GetMapping("/getauthoridbyname/{name}")
+	public Integer getAuthorIdByName(@PathVariable String name) {
+		List<Author> author = authorRepo.findByAuthorName(name);
+		Integer id = author.get(0).getAuthorId();
+		return id;
+	}
 }

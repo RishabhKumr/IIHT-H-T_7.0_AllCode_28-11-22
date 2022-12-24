@@ -1,5 +1,6 @@
 package com.user.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -23,6 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import com.user.dto.SubscriptionMapperDto;
+import com.user.entity.Subscription;
 import com.user.entity.book.Book;
 import com.user.service.IBlockService;
 import com.user.service.ISubscriptionService;
@@ -140,8 +143,16 @@ public class TestController {
   }
   
   @DeleteMapping("/unsubscribe/{id}")
-  public String deleteSubscription(@PathVariable int  id) {
-	  return subscriptionService.deleteSubscripton(id);
+  public ResponseEntity deleteSubscription(@PathVariable int  id) {
+	  ResponseEntity<String> responseEntity = new ResponseEntity<>("Success",HttpStatus.OK);
+	  try{
+		  subscriptionService.deleteSubscripton(id);
+	  }
+	  catch(Exception e) {
+			e.printStackTrace();
+			responseEntity = new ResponseEntity<String>("Failed",HttpStatus.NOT_FOUND);
+		}
+	  return responseEntity;
   }
   
   @PostMapping("/getsubscriptionid")
@@ -157,5 +168,40 @@ public class TestController {
   @PostMapping("/isblocked")
   public boolean checkBookBlock(@RequestBody SubscriptionMapperDto subscriber) {
 	  return blockService.getBooksByUserIdBookId(subscriber.getUserId(), subscriber.getBookId());
+  }
+  
+  @GetMapping("/subscribedbooks/{userId}")
+  public List<Optional> allSubscribedBooks(@PathVariable int userId){
+	  List<Optional> bookList = new ArrayList<>();
+	  List<Subscription> bookIds = subscriptionService.getAllBookIdBySubscriptionId(userId);
+	  for(int i=0;i<bookIds.size();i++) {
+		  String url="http://localhost:8082/book/getAllBookDetails/"+bookIds.get(i).getBookId();
+		  Optional  book = this.restTemplate.getForObject(url, Optional.class);
+		  bookList.add(book);
+	  }
+	  return bookList;
+  }
+  @GetMapping("/searchforupdate/{bookTitle}")
+  public Integer getBookBytitleupdate(@PathVariable String bookTitle){
+	  String url = "http://localhost:8082/book/getbookid"+"/"+bookTitle;
+	  Integer book = this.restTemplate.getForObject(url, Integer.class);
+	  return book;
+  }
+  
+  @GetMapping("/getauthoridbyname/{name}")
+  public Integer getAuthorIdbyName(@PathVariable String name) {
+	  String url = "http://localhost:8082/book/getauthoridbyname"+"/"+name;
+	  Integer id = this.restTemplate.getForObject(url, Integer.class);
+	  return id;
+  }
+  
+  @PostMapping("/createbook/{authorId}")
+  public ResponseEntity createBook(@PathVariable int authorId,@RequestBody Book book) {
+	    String url = "http://localhost:8082/book/createBook"+"/"+authorId;
+	    HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(MediaType.APPLICATION_JSON);
+		HttpEntity entity = new HttpEntity(book,headers);
+		ResponseEntity<String> status = this.restTemplate.exchange(url, HttpMethod.POST,entity, String.class);
+		return status;
   }
 }

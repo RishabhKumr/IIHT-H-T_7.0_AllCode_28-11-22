@@ -52,6 +52,12 @@ public class SubscriptionServiceImpl implements ISubscriptionService{
 		Subscription subscriberObj = subscriber.get(0);
 		return subscriberObj.getSubscriptionId();
 	}
+
+	@Override
+	public List<Subscription> getAllBookIdBySubscriptionId(int userId) {
+		List<Subscription> bookIds = subscriptionRepo.findByUserId(userId);
+		return bookIds;
+	}
 	
 
 }

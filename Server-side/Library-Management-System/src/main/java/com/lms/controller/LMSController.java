@@ -50,7 +50,7 @@ public class LMSController {
 	}
 	
 	@DeleteMapping("/remove/{id}")
-	public ResponseEntity<Book> deleteBook(@PathVariable Integer id){
+	public ResponseEntity deleteBook(@PathVariable Integer id){
 		ResponseEntity<Book> responseEntity = new ResponseEntity<>(HttpStatus.OK);
 		try {
 			lmsService.deleteBook(id);
