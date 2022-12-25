@@ -301,6 +301,35 @@
 			"response": []
 		},
 		{
+			"name": "search book by book publisher",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY3MTU3MzI5NCwiaWF0IjoxNjcxNTU1Mjk0fQ.f3A8ex6vVX_tBSk673HzVcijegTTreruLlsOuVEVG6WBGgia2NcKkYgidfONX1SYJR4_Emq9qqpg5y0hcyghQQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "search book by params",
 			"request": {
 				"auth": {
@@ -475,6 +504,14 @@
 			"response": []
 		},
 		{
+			"name": "get subscribed  books by userid",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
 			"name": "block book",
 			"request": {
 				"method": "POST",
@@ -484,6 +521,44 @@
 		},
 		{
 			"name": "is book blocked?",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "is book blocked? Copy",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "create book",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/auth/test/createBook/13",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"auth",
+						"test",
+						"createBook",
+						"13"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "booklist by authorid",
 			"request": {
 				"method": "GET",
 				"header": []
