@@ -223,6 +223,7 @@ public class TestController {
 	    bookObj.setBookCategory(book.getBookCategory());
 	    bookObj.setBookContent(book.getBookContent());
 	    bookObj.setBookDescription(book.getBookDescription());
+	    bookObj.setBookPublisher(book.getBookPublisher());
 	    bookObj.setBookLogo(book.getBookLogo());
 	    bookObj.setBookPrice(book.getBookPrice());
 	    String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
