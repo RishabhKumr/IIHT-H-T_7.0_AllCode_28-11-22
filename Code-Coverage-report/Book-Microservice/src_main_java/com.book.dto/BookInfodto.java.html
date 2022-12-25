@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../jacoco-resources/report.gif" type="image/gif"/><title>BookInfodto.java</title><link rel="stylesheet" href="../../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">Book-Microservice (25-Dec-2022 6:54:04 PM)</a> &gt; <a href="../../index.html" class="el_group">Book-Microservice</a> &gt; <a href="../index.html" class="el_bundle">src/main/java</a> &gt; <a href="index.source.html" class="el_package">com.book.dto</a> &gt; <span class="el_source">BookInfodto.java</span></div><h1>BookInfodto.java</h1><pre class="source lang-java linenums">package com.book.dto;
+
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+
+import org.springframework.stereotype.Component;
+
+import com.book.entity.Author;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+@Component
+public class BookInfodto {
+	private int bookId;
+	private String bookTitle;
+	private String bookAuthor;
+	private String bookCategory;
+	private int bookPrice;
+	private String bookPublisher;
+	private String bookPublishedDate;
+	private String bookLogo;
+	private String bookDescription;
+	private String bookContent;
+	private boolean bookActive;
+	public BookInfodto() {
+<span class="fc" id="L26">		super();</span>
+		// TODO Auto-generated constructor stub
+<span class="fc" id="L28">	}</span>
+	public BookInfodto(int bookId, String bookTitle, String bookAuthor, String bookCategory, int bookPrice,
+			String bookPublisher, String bookPublishedDate, String bookLogo, String bookDescription, String bookContent,
+			boolean bookActive) {
+<span class="fc" id="L32">		super();</span>
+<span class="fc" id="L33">		this.bookId = bookId;</span>
+<span class="fc" id="L34">		this.bookTitle = bookTitle;</span>
+<span class="fc" id="L35">		this.bookAuthor = bookAuthor;</span>
+<span class="fc" id="L36">		this.bookCategory = bookCategory;</span>
+<span class="fc" id="L37">		this.bookPrice = bookPrice;</span>
+<span class="fc" id="L38">		this.bookPublisher = bookPublisher;</span>
+<span class="fc" id="L39">		this.bookPublishedDate = bookPublishedDate;</span>
+<span class="fc" id="L40">		this.bookLogo = bookLogo;</span>
+<span class="fc" id="L41">		this.bookDescription = bookDescription;</span>
+<span class="fc" id="L42">		this.bookContent = bookContent;</span>
+<span class="fc" id="L43">		this.bookActive = bookActive;</span>
+<span class="fc" id="L44">	}</span>
+	public int getBookId() {
+<span class="nc" id="L46">		return bookId;</span>
+	}
+	public void setBookId(int bookId) {
+<span class="nc" id="L49">		this.bookId = bookId;</span>
+<span class="nc" id="L50">	}</span>
+	public String getBookTitle() {
+<span class="fc" id="L52">		return bookTitle;</span>
+	}
+	public void setBookTitle(String bookTitle) {
+<span class="nc" id="L55">		this.bookTitle = bookTitle;</span>
+<span class="nc" id="L56">	}</span>
+	public String getBookAuthor() {
+<span class="nc" id="L58">		return bookAuthor;</span>
+	}
+	public void setBookAuthor(String bookAuthor) {
+<span class="nc" id="L61">		this.bookAuthor = bookAuthor;</span>
+<span class="nc" id="L62">	}</span>
+	public String getBookCategory() {
+<span class="fc" id="L64">		return bookCategory;</span>
+	}
+	public void setBookCategory(String bookCategory) {
+<span class="nc" id="L67">		this.bookCategory = bookCategory;</span>
+<span class="nc" id="L68">	}</span>
+	public int getBookPrice() {
+<span class="fc" id="L70">		return bookPrice;</span>
+	}
+	public void setBookPrice(int bookPrice) {
+<span class="nc" id="L73">		this.bookPrice = bookPrice;</span>
+<span class="nc" id="L74">	}</span>
+	public String getBookPublisher() {
+<span class="fc" id="L76">		return bookPublisher;</span>
+	}
+	public void setBookPublisher(String bookPublisher) {
+<span class="nc" id="L79">		this.bookPublisher = bookPublisher;</span>
+<span class="nc" id="L80">	}</span>
+	public String getBookPublishedDate() {
+<span class="fc" id="L82">		return bookPublishedDate;</span>
+	}
+	public void setBookPublishedDate(String bookPublishedDate) {
+<span class="nc" id="L85">		this.bookPublishedDate = bookPublishedDate;</span>
+<span class="nc" id="L86">	}</span>
+	public String getBookLogo() {
+<span class="fc" id="L88">		return bookLogo;</span>
+	}
+	public void setBookLogo(String bookLogo) {
+<span class="nc" id="L91">		this.bookLogo = bookLogo;</span>
+<span class="nc" id="L92">	}</span>
+	public String getBookDescription() {
+<span class="fc" id="L94">		return bookDescription;</span>
+	}
+	public void setBookDescription(String bookDescription) {
+<span class="nc" id="L97">		this.bookDescription = bookDescription;</span>
+<span class="nc" id="L98">	}</span>
+	public String getBookContent() {
+<span class="fc" id="L100">		return bookContent;</span>
+	}
+	public void setBookContent(String bookContent) {
+<span class="nc" id="L103">		this.bookContent = bookContent;</span>
+<span class="nc" id="L104">	}</span>
+	public boolean isBookActive() {
+<span class="fc" id="L106">		return bookActive;</span>
+	}
+	public void setBookActive(boolean bookActive) {
+<span class="nc" id="L109">		this.bookActive = bookActive;</span>
+<span class="nc" id="L110">	}</span>
+	
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span>Book-Microservice (25-Dec-2022 6:54:04 PM)</div></body></html>

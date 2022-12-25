@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../jacoco-resources/report.gif" type="image/gif"/><title>ControllerMokitoURITest.java</title><link rel="stylesheet" href="../../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">Book-Microservice (25-Dec-2022 6:54:04 PM)</a> &gt; <a href="../../index.html" class="el_group">Book-Microservice</a> &gt; <a href="../index.html" class="el_bundle">src/test/java</a> &gt; <a href="index.source.html" class="el_package">com.book</a> &gt; <span class="el_source">ControllerMokitoURITest.java</span></div><h1>ControllerMokitoURITest.java</h1><pre class="source lang-java linenums">package com.book;
+
+
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
+
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.core.annotation.Order;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+
+import com.book.controller.BookController;
+import com.book.dto.BookInfodto;
+import com.book.entity.Author;
+import com.book.entity.Book;
+import com.book.service.BookServiceImpl;
+
+
+@TestMethodOrder(OrderAnnotation.class)
+@ComponentScan(basePackages = &quot;com.book&quot;)
+@AutoConfigureMockMvc
+@ContextConfiguration
+@SpringBootTest(classes = { ControllerMokitoURITest.class })
+<span class="fc" id="L41">public class ControllerMokitoURITest {</span>
+
+	@Autowired
+	MockMvc mockMvc;
+
+	@Mock
+	BookServiceImpl bookService;
+
+	@InjectMocks
+	BookController bookController;
+
+	@BeforeEach
+	public void setup() {
+<span class="fc" id="L54">		mockMvc = MockMvcBuilders.standaloneSetup(bookController).build();</span>
+<span class="fc" id="L55">	}</span>
+
+	@Test
+	@Order(1)
+	public void test_createBook() throws Exception {
+<span class="fc" id="L60">		BookInfodto book = new BookInfodto(1, &quot;Gandhi lifestories&quot;, &quot;rishabh&quot;, &quot;Study&quot;, 101, &quot;MGH&quot;, &quot;26-02-2626&quot;,</span>
+<span class="fc" id="L61">				&quot;logo&quot;, &quot;desc&quot;, &quot;Content&quot;, false);</span>
+<span class="fc" id="L62">		when(bookService.createBook(book, 1)).thenReturn(book.getBookTitle());</span>
+<span class="fc" id="L63">		this.mockMvc.perform(post(&quot;/createBook/{authorId}&quot;, 1)).andReturn();</span>
+<span class="fc" id="L64">	}</span>
+
+	@Test
+	@Order(2)
+	public void test_getBookByAllDetails() throws Exception {
+
+<span class="fc" id="L70">		Author author = new Author(1, &quot;rishabh&quot;, &quot;rishabh@gmail.com&quot;, &quot;password&quot;, &quot;ROLE_AUTHOR&quot;);</span>
+<span class="fc" id="L71">		Book book = new Book(1, &quot;Gandhi lifestories&quot;, author, &quot;Study&quot;, 101, &quot;MGH&quot;, &quot;26-02-2626&quot;, &quot;logo&quot;, &quot;desc&quot;,</span>
+<span class="fc" id="L72">				&quot;Content&quot;, false);</span>
+<span class="fc" id="L73">		Optional&lt;Book&gt; getbook = bookService.getBookAllDetails(book.getBookId());</span>
+<span class="fc" id="L74">		when(bookService.getBookAllDetails(1)).thenReturn(getbook);</span>
+<span class="fc" id="L75">		this.mockMvc.perform(get(&quot;/getAllBookDetails/{bookId}&quot;, 1)).andReturn();</span>
+<span class="fc" id="L76">	}</span>
+	
+	
+	@Test
+	@Order(4)
+	public void getBookInfo() {
+		
+<span class="fc" id="L83">	}</span>
+	
+	@Test
+	@Order(4)
+	public void test_listAllBookInfo() throws Exception {
+<span class="fc" id="L88">		List&lt;Book&gt; book = new ArrayList&lt;Book&gt;();</span>
+<span class="fc" id="L89">		Author author = new Author(1, &quot;rishabh&quot;, &quot;rishabh@gmail.com&quot;, &quot;password&quot;, &quot;ROLE_AUTHOR&quot;);</span>
+<span class="fc" id="L90">		book.add(new Book(1, &quot;Gandhi lifestories&quot;, author, &quot;Study&quot;, 101, &quot;MGH&quot;, &quot;26-02-2626&quot;, &quot;logo&quot;, &quot;desc&quot;, &quot;Content&quot;,</span>
+<span class="fc" id="L91">				false));</span>
+<span class="fc" id="L92">		when(bookService.listAllBookInfo()).thenReturn(book);</span>
+<span class="fc" id="L93">		this.mockMvc.perform(get(&quot;/allBooks&quot;)).andReturn();</span>
+<span class="fc" id="L94">	}</span>
+
+	
+	@Test
+	@Order(5)
+	public void test_updateBookByAuthor() throws Exception {
+		
+<span class="fc" id="L101">		BookInfodto book = new BookInfodto(1, &quot;Gandhi lifestories&quot;, &quot;rishabh&quot;, &quot;Study&quot;, 101, &quot;MGH&quot;, &quot;26-02-2626&quot;,</span>
+<span class="fc" id="L102">				&quot;logo&quot;, &quot;desc&quot;, &quot;Content&quot;, false);</span>
+<span class="fc" id="L103">		String status = &quot;Updated Book '&quot; + book.getBookTitle() + &quot;'&quot;;</span>
+<span class="fc" id="L104">		when(bookService.updateBookContent(book, 1)).thenReturn(status);</span>
+<span class="fc" id="L105">		this.mockMvc.perform(put(&quot;/updateBook/{id}&quot;, 1))</span>
+<span class="fc" id="L106">		.andReturn();</span>
+		
+<span class="fc" id="L108">	}</span>
+	
+	@Test
+	@Order(6)
+	public void test_updateBookStatus() throws Exception {
+<span class="fc" id="L113">		List&lt;Book&gt; bookList = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L114">		Author author = new Author(1, &quot;rishabh&quot;, &quot;rishabh@gmail.com&quot;, &quot;password&quot;, &quot;ROLE_AUTHOR&quot;);</span>
+<span class="fc" id="L115">		Book book = new Book(1, &quot;Gandhi lifestories&quot;, author, &quot;Study&quot;, 101, &quot;MGH&quot;, &quot;26-02-2626&quot;, &quot;logo&quot;, &quot;desc&quot;,</span>
+<span class="fc" id="L116">				&quot;Content&quot;, false);</span>
+<span class="fc" id="L117">		bookList.add(book);</span>
+<span class="fc" id="L118">		when(bookService.updateBookStatus(book, 1)).thenReturn(book);</span>
+<span class="fc" id="L119">		this.mockMvc.perform(put(&quot;/changeActiveStatus/{id}&quot;, 1))</span>
+<span class="fc" id="L120">		.andReturn();</span>
+<span class="fc" id="L121">	}</span>
+	
+	@Test
+	@Order(6)
+	public void test_getBookByCategoryTitleAuthorPricePublisher() throws Exception{
+<span class="fc" id="L126">		Author author = new Author(1, &quot;rishabh&quot;, &quot;rishabh@gmail.com&quot;, &quot;password&quot;, &quot;ROLE_AUTHOR&quot;);</span>
+<span class="fc" id="L127">		Book book = new Book(1, &quot;Gandhi lifestories&quot;, author, &quot;Study&quot;, 101, &quot;MGH&quot;, &quot;26-02-2626&quot;, &quot;logo&quot;, &quot;desc&quot;,</span>
+<span class="fc" id="L128">				&quot;Content&quot;, false);</span>
+<span class="fc" id="L129">		Optional&lt;Book&gt; getbook = bookService.getBookAllDetails(book.getBookId());</span>
+<span class="fc" id="L130">		when(bookService.getBookAllDetails(1)).thenReturn(getbook);</span>
+<span class="fc" id="L131">		this.mockMvc.perform(get(&quot;/search&quot;)).andReturn();</span>
+<span class="fc" id="L132">	}</span>
+	
+	@Test
+	@Order(6)
+	public void test_getBookByCategory() throws Exception {
+<span class="fc" id="L137">		Author author = new Author(1, &quot;rishabh&quot;, &quot;rishabh@gmail.com&quot;, &quot;password&quot;, &quot;ROLE_AUTHOR&quot;);</span>
+<span class="fc" id="L138">		Book book = new Book(1, &quot;Gandhi lifestories&quot;, author, &quot;Study&quot;, 101, &quot;MGH&quot;, &quot;26-02-2626&quot;, &quot;logo&quot;, &quot;desc&quot;,</span>
+<span class="fc" id="L139">				&quot;Content&quot;, false);</span>
+<span class="fc" id="L140">		List&lt;Book&gt; bookList = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L141">		when(bookService.listBookByCategory(book.getBookCategory())).thenReturn(bookList);</span>
+<span class="fc" id="L142">		this.mockMvc.perform(get(&quot;/searchbycategory/{bookCategory}&quot;, &quot;Study&quot;))</span>
+<span class="fc" id="L143">		.andReturn();</span>
+<span class="fc" id="L144">	}</span>
+	
+	@Test
+	@Order(6)
+	public void getBookAuthor() throws Exception {
+<span class="fc" id="L149">		Author author = new Author(1, &quot;rishabh&quot;, &quot;rishabh@gmail.com&quot;, &quot;password&quot;, &quot;ROLE_AUTHOR&quot;);</span>
+<span class="fc" id="L150">		Book book = new Book(1, &quot;Gandhi lifestories&quot;, author, &quot;Study&quot;, 101, &quot;MGH&quot;, &quot;26-02-2626&quot;, &quot;logo&quot;, &quot;desc&quot;,</span>
+<span class="fc" id="L151">				&quot;Content&quot;, false);</span>
+<span class="fc" id="L152">		when(bookService.getAuthorNameByBookId(1)).thenReturn(book.getBookAuthor().getAuthorName());</span>
+<span class="fc" id="L153">		this.mockMvc.perform(get(&quot;/getauthorname/{bookId}&quot;, 1))</span>
+<span class="fc" id="L154">		.andReturn();</span>
+<span class="fc" id="L155">	}</span>
+	
+	@Test
+	@Order(6)
+	public void getBookByTitle() throws Exception {
+<span class="fc" id="L160">		Author author = new Author(1, &quot;rishabh&quot;, &quot;rishabh@gmail.com&quot;, &quot;password&quot;, &quot;ROLE_AUTHOR&quot;);</span>
+<span class="fc" id="L161">		Book book = new Book(1, &quot;Gandhi lifestories&quot;, author, &quot;Study&quot;, 101, &quot;MGH&quot;, &quot;26-02-2626&quot;, &quot;logo&quot;, &quot;desc&quot;,</span>
+<span class="fc" id="L162">				&quot;Content&quot;, false);</span>
+<span class="fc" id="L163">		List&lt;Book&gt; bookList = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L164">		bookList.add(book);</span>
+<span class="fc" id="L165">		when(bookService.getBookByTitle(book.getBookTitle())).thenReturn(bookList);</span>
+<span class="fc" id="L166">		this.mockMvc.perform(get(&quot;/title/{bookTitle}&quot;, &quot;Study&quot;))</span>
+<span class="fc" id="L167">		.andReturn();</span>
+<span class="fc" id="L168">	}</span>
+	
+	@Test
+	@Order(6)
+	public void getBookContentByTitle() throws Exception {
+<span class="fc" id="L173">		Author author = new Author(1, &quot;rishabh&quot;, &quot;rishabh@gmail.com&quot;, &quot;password&quot;, &quot;ROLE_AUTHOR&quot;);</span>
+<span class="fc" id="L174">		Book book = new Book(1, &quot;Gandhi lifestories&quot;, author, &quot;Study&quot;, 101, &quot;MGH&quot;, &quot;26-02-2626&quot;, &quot;logo&quot;, &quot;desc&quot;,</span>
+<span class="fc" id="L175">				&quot;Content&quot;, false);</span>
+<span class="fc" id="L176">		when(bookService.getBookContentById(book.getBookTitle())).thenReturn(book.getBookContent());</span>
+<span class="fc" id="L177">		this.mockMvc.perform(get(&quot;/getbookContent/{bookTitle}&quot;, &quot;Study&quot;))</span>
+<span class="fc" id="L178">		.andReturn();</span>
+<span class="fc" id="L179">	}</span>
+	
+	@Test
+	@Order(6)
+	public void addAuthor() {
+		
+<span class="fc" id="L185">	}</span>
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span>Book-Microservice (25-Dec-2022 6:54:04 PM)</div></body></html>

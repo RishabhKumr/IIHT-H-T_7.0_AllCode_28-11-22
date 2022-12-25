@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../jacoco-resources/report.gif" type="image/gif"/><title>BookServiceImpl.java</title><link rel="stylesheet" href="../../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">Book-Microservice (25-Dec-2022 6:54:04 PM)</a> &gt; <a href="../../index.html" class="el_group">Book-Microservice</a> &gt; <a href="../index.html" class="el_bundle">src/main/java</a> &gt; <a href="index.source.html" class="el_package">com.book.service</a> &gt; <span class="el_source">BookServiceImpl.java</span></div><h1>BookServiceImpl.java</h1><pre class="source lang-java linenums">package com.book.service;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+
+import com.book.dto.BookInfodto;
+import com.book.entity.Author;
+import com.book.entity.Book;
+import com.book.exceptions.BookServiceException;
+import com.book.repository.IAuthorRepository;
+import com.book.repository.IBookInfo;
+import com.book.repository.IBookRepository;
+
+@Service
+<span class="fc" id="L19">public class BookServiceImpl implements IBookService{</span>
+	
+	@Autowired
+	IBookRepository bookRepository;
+	
+	@Autowired
+	IAuthorRepository authorRepository;
+	
+	@Override
+	public String createBook(BookInfodto book, int id) {
+<span class="fc" id="L29">		Book existingBook = new Book();</span>
+<span class="fc" id="L30">		Author author = new Author();</span>
+<span class="fc" id="L31">		author.setAuthorId(id);</span>
+<span class="fc" id="L32">		System.out.println(author.getAuthorId());</span>
+		try {
+<span class="fc" id="L34">			existingBook.setBookTitle(book.getBookTitle());</span>
+<span class="fc" id="L35">			existingBook.setBookActive(book.isBookActive());</span>
+<span class="fc" id="L36">			existingBook.setBookCategory(book.getBookCategory());</span>
+<span class="fc" id="L37">			existingBook.setBookContent(book.getBookContent());</span>
+<span class="fc" id="L38">			existingBook.setBookDescription(book.getBookDescription());</span>
+<span class="fc" id="L39">			existingBook.setBookLogo(book.getBookLogo());</span>
+<span class="fc" id="L40">			existingBook.setBookPrice(book.getBookPrice());</span>
+<span class="fc" id="L41">			existingBook.setBookPublishedDate(book.getBookPublishedDate());</span>
+<span class="fc" id="L42">			existingBook.setBookPublisher(book.getBookPublisher());</span>
+<span class="fc" id="L43">			System.out.println(existingBook.getBookTitle());</span>
+<span class="fc" id="L44">			existingBook.setBookAuthor(author);</span>
+<span class="nc" id="L45">		    existingBook= bookRepository.save(existingBook);</span>
+<span class="nc" id="L46">		}</span>
+<span class="nc" id="L47">		catch(Exception ex) {</span>
+<span class="nc" id="L48">			throw new BookServiceException(&quot;Book creation Failed!&quot;);</span>
+		}
+<span class="nc" id="L50">		return existingBook.getBookTitle()+&quot; Created!&quot;;</span>
+	}
+
+	@Override
+	public Optional&lt;Book&gt; getBookAllDetails(Integer id) {
+<span class="fc" id="L55">		return bookRepository.findById(id);</span>
+	}
+
+	@Override
+	public List&lt;Book&gt; listAllBookInfo() {
+<span class="fc" id="L60">		List&lt;Book&gt; bookList = bookRepository.findAll();</span>
+<span class="fc" id="L61">		return bookList;</span>
+	}
+
+	@Override
+	public String updateBookContent(BookInfodto book, Integer id) {
+<span class="fc" id="L66">		String status=&quot;Not able to update book, Kindly check logs!&quot;;</span>
+<span class="pc" id="L67">		Book existingBook = bookRepository.findById(id).orElseThrow(</span>
+<span class="fc" id="L68">				()-&gt; new com.book.exceptions.ResourceNotFoundExceptionHandler(&quot;Book&quot;,&quot;id&quot;,id));</span>
+<span class="nc bnc" id="L69" title="All 2 branches missed.">		if(existingBook!=null) {</span>
+<span class="nc" id="L70">			existingBook.setBookTitle(book.getBookTitle());</span>
+<span class="nc" id="L71">			existingBook.setBookActive(book.isBookActive());</span>
+<span class="nc" id="L72">			existingBook.setBookCategory(book.getBookCategory());</span>
+<span class="nc" id="L73">			existingBook.setBookContent(book.getBookContent());</span>
+<span class="nc" id="L74">			existingBook.setBookDescription(book.getBookDescription());</span>
+<span class="nc" id="L75">			existingBook.setBookLogo(book.getBookLogo());</span>
+<span class="nc" id="L76">			existingBook.setBookPrice(book.getBookPrice());</span>
+<span class="nc" id="L77">			existingBook.setBookPublishedDate(book.getBookPublishedDate());</span>
+<span class="nc" id="L78">			existingBook.setBookPublisher(book.getBookPublisher());</span>
+<span class="nc" id="L79">			existingBook.setBookId(book.getBookId());</span>
+<span class="nc" id="L80">			bookRepository.save(existingBook);</span>
+<span class="nc" id="L81">			status=&quot;Updated Book '&quot;+existingBook.getBookTitle()+&quot;'&quot;;</span>
+			}
+<span class="nc" id="L83">			return status;</span>
+		
+	}
+
+	@Override
+	public Book updateBookStatus(Book book, Integer id) {
+<span class="pc" id="L89">		Book existingBook = bookRepository.findById(id).orElseThrow(</span>
+<span class="fc" id="L90">				()-&gt; new com.book.exceptions.ResourceNotFoundExceptionHandler(&quot;Book&quot;,&quot;id&quot;,id));</span>
+<span class="nc" id="L91">		existingBook.setBookActive(book.isBookActive());</span>
+<span class="nc" id="L92">		bookRepository.save(existingBook);</span>
+<span class="nc" id="L93">		return existingBook;</span>
+	}
+
+	@Override
+	public List&lt;Book&gt; listBookByCategory(String bookCategory) {
+<span class="fc" id="L98">		List&lt;Book&gt; bookList = bookRepository.findByBookCategory(bookCategory);</span>
+<span class="fc" id="L99">		return bookList;</span>
+	}
+
+	@Override
+	public String getAuthorNameByBookId(int bookId) {
+<span class="nc" id="L104">		List&lt;IBookInfo&gt; bookInfo = bookRepository.findByBookId(bookId);</span>
+<span class="nc" id="L105">		IBookInfo bookInfoObj = bookInfo.get(0);</span>
+<span class="nc" id="L106">		String authorName = bookInfoObj.getbookAuthor().getAuthorName();</span>
+<span class="nc" id="L107">		return authorName;</span>
+	}
+
+	@Override
+	public List&lt;Book&gt; getBookByTitle(String bookTitle) {
+		
+<span class="fc" id="L113">		List&lt;Book&gt; bookList = bookRepository.findByBookTitle(bookTitle);</span>
+<span class="fc" id="L114">		return bookList;</span>
+		
+	}
+
+	@Override
+	public String getBookContentById(String bookTitle) {
+<span class="fc" id="L120">		List&lt;Book&gt; book = bookRepository.findByBookTitle(bookTitle);</span>
+<span class="fc" id="L121">		return book.get(0).getBookContent();</span>
+	}
+
+	@Override
+	public ResponseEntity&lt;?&gt; createAuthor(Author author) {
+<span class="nc" id="L126">		authorRepository.save(author);</span>
+<span class="nc" id="L127">		return ResponseEntity.ok(&quot;Author registered with book service!&quot;);</span>
+	}
+
+	@Override
+	public List&lt;Book&gt; listBookByPublisher(String bookPublisher) {
+<span class="nc" id="L132">		List&lt;Book&gt; book = bookRepository.findByBookPublisher(bookPublisher);</span>
+<span class="nc" id="L133">		return book;</span>
+	}
+	
+	
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span>Book-Microservice (25-Dec-2022 6:54:04 PM)</div></body></html>
