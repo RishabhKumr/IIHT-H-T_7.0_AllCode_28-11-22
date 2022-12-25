@@ -10,11 +10,12 @@ import { TokenStorageService } from 'src/app/service/token-storage.service';
   styleUrls: ['./reader-navbar.component.css']
 })
 export class ReaderNavbarComponent implements OnInit {
-
+  selectValue:string;
   username:string;
   constructor(private tokenStorage:TokenStorageService,private router:Router) { }
 
   ngOnInit(): void {
+    this.selectValue = "Title";
     const user = this.tokenStorage.getUser();
     this.username = user.username;
   }
@@ -30,6 +31,7 @@ export class ReaderNavbarComponent implements OnInit {
   }
   
   onselected(value:string){
-    sessionStorage.setItem("type",value);
+    this.selectValue = value
+    sessionStorage.setItem("type",this.selectValue);
   }
 }

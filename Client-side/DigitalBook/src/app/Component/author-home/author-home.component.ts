@@ -41,7 +41,8 @@ export class AuthorHomeComponent implements OnInit {
        if(data === null){
         alert("Already Subscribed");
        }
-       else{
+       else
+       {
        alert("Subscribed successfully, Subscription Id "+data);
        }
      },
