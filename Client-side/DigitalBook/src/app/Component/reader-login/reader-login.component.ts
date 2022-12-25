@@ -65,7 +65,7 @@ export class ReaderLoginComponent implements OnInit {
   }
 
   reloadPage(): void {
-    //window.location.reload();
+    window.location.reload();
   }
 
   info(){

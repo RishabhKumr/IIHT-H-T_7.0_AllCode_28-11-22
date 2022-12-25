@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Book } from 'src/app/entity/Book';
 import { BookInfo } from 'src/app/entity/BookInfo';
 import { SubscribeEntity } from 'src/app/entity/SubscribeEntity';
@@ -18,7 +19,7 @@ export class ReaderSubscriptionComponent implements OnInit {
   subscriptionId:number;
   message:string;
   errorMessage='';
-  constructor(private userService: UserService,private tokenStorage:TokenStorageService,private subscriptionService:SubscriptionService) { }
+  constructor(private router:Router,private userService: UserService,private tokenStorage:TokenStorageService,private subscriptionService:SubscriptionService) { }
   books:Book[] = [];
   ngOnInit(): void {
     console.log(this.tokenStorage.getUser().id);
@@ -50,6 +51,7 @@ export class ReaderSubscriptionComponent implements OnInit {
     })
     
       alert("Please check for Subscription Status!");
+      this.router.navigate(['readerdashboard']);
   }
 
   readBook(b:Book){

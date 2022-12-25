@@ -29,7 +29,7 @@ import { AuthorSubscriptionComponent } from './Component/author-subscription/aut
 import { AuthorUpdateBookComponent } from './Component/author-update-book/author-update-book.component';
 import { ReaderHomeComponent } from './Component/reader-home/reader-home.component';
 import { AuthorHomeComponent } from './Component/author-home/author-home.component';
-
+import { NgxLoadingButtonsModule } from 'ngx-loading-buttons';
 
 @NgModule({
   declarations: [
@@ -63,7 +63,8 @@ import { AuthorHomeComponent } from './Component/author-home/author-home.compone
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgxLoadingButtonsModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

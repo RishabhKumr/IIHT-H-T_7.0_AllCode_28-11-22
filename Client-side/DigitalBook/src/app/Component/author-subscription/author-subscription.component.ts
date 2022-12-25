@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Book } from 'src/app/entity/Book';
 import { BookInfo } from 'src/app/entity/BookInfo';
 import { SubscribeEntity } from 'src/app/entity/SubscribeEntity';
 import { SubscriptionService } from 'src/app/service/subscription.service';
@@ -16,13 +18,13 @@ export class AuthorSubscriptionComponent implements OnInit {
   subscriptionId:number;
   message:string;
   errorMessage='';
-  constructor(private userService: UserService,private tokenStorage:TokenStorageService,private subscriptionService:SubscriptionService) { }
-  books:BookInfo[] = [];
+  constructor(private router:Router,private userService: UserService,private tokenStorage:TokenStorageService,private subscriptionService:SubscriptionService) { }
+  books:Book[] = [];
   ngOnInit(): void {
     console.log(this.tokenStorage.getUser().id);
     const promise = this.subscriptionService.getSubscribedBook(this.tokenStorage.getUser().id);
     promise.subscribe((response) => {
-      this.books = response as BookInfo[];
+      this.books = response as Book[];
       console.log(this.books);
     });
   }
@@ -48,6 +50,14 @@ export class AuthorSubscriptionComponent implements OnInit {
       this.errorMessage=err.error.message;
       alert("Unsubscription Failed after 24hrs ");
     })
+    alert("Please check mail for Subscription status!");
+    this.router.navigate(['authordashboard']);
+  }
+
+  readBook(b:Book){
+    console.log("bookContent");
+    window.open(String(b.bookContent),"_blank");
+    
   }
   
 }

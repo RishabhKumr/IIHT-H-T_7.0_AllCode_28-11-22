@@ -32,5 +32,7 @@ public interface IBookService {
 	
 	public ResponseEntity<?> createAuthor(Author author);
 	
+	public List<Book> listBookByPublisher(String bookPublisher);
+	
 	
 }

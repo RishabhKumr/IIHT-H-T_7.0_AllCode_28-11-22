@@ -9,14 +9,14 @@
         <li *ngFor="let b of books,index as i">
             <h2><img style="" width="70px" height="105px" src="{{b.bookLogo}}"></h2>
             <h3>{{b.bookTitle}}</h3>
-            <p><span>Author - </span>
-                {{b.bookPublisher}}
-            </p>
             <p><span>Genre - </span>
                 {{b.bookCategory}}
             </p>
             <p><span>Price - </span>
                 {{b.bookPrice | currency:'EUR'}}
+            </p>
+            <p><span>Publisher- </span>
+                {{b.bookPublisher}}
             </p>
             <button type="button" class="btn btn-success" (click)="alertMethod()">Read</button>
         </li>

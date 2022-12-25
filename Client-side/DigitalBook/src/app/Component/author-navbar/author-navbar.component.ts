@@ -28,4 +28,7 @@ export class AuthorNavbarComponent implements OnInit {
     this.router.navigate(['authordashboard/search']);
     f.resetForm();
   }
+  onselected(value:string){
+    sessionStorage.setItem("type",value);
+  }
 }

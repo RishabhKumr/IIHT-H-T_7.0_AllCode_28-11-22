@@ -145,4 +145,10 @@ public class BookController {
 		Integer id = author.get(0).getAuthorId();
 		return id;
 	}
+	
+	@GetMapping("/searchbypublisher/{bookPublisher}")
+	public List<Book> searchBuPublisher(@PathVariable String bookPublisher){
+		List<Book> book = bookService.listBookByPublisher(bookPublisher);
+		return book;
+	}
 }

@@ -16,7 +16,7 @@ public class SendEmail {
         SimpleMailMessage msg = new SimpleMailMessage();
         msg.setFrom("kumarrishabh201@gmail.com");
         msg.setTo(email);
-        msg.setSubject("Donot Reply To This Mail");
+        msg.setSubject("noReply");
         msg.setText("Greetings, "+info);
         javaMailSender.send(msg);
         System.out.println("sent");

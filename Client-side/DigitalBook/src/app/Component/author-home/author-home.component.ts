@@ -7,6 +7,7 @@ import { SubscriptionService } from 'src/app/service/subscription.service';
 import { TokenStorageService } from 'src/app/service/token-storage.service';
 import { UserService } from 'src/app/service/user.service';
 
+
 @Component({
   selector: 'app-author-home',
   templateUrl: './author-home.component.html',
@@ -26,8 +27,9 @@ export class AuthorHomeComponent implements OnInit {
           console.log(this.books);
         });
   }
-
+ 
   subscribeEntity = new SubscribeEntity();
+  
   subscribeMethod(book:BookInfo){
      this.userId= this.tokenStorage.getUser().id;
      console.log(this.userId);
@@ -36,7 +38,12 @@ export class AuthorHomeComponent implements OnInit {
      this.subscribeEntity.bookId = book.bookId;
      this.subscriptionService.subscribeBook(this.subscribeEntity)
      .subscribe(data =>{
+       if(data === null){
+        alert("Already Subscribed");
+       }
+       else{
        alert("Subscribed successfully, Subscription Id "+data);
+       }
      },
      err => {
       this.errorMessage = err.error.message;
@@ -44,4 +51,5 @@ export class AuthorHomeComponent implements OnInit {
      }
      )
   }
+ 
 }

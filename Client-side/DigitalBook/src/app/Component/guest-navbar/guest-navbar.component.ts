@@ -10,9 +10,9 @@ import { TokenStorageService } from 'src/app/service/token-storage.service';
 })
 export class GuestNavbarComponent implements OnInit {
 
-  username:string;
-  constructor(private tokenStorage:TokenStorageService,private router:Router) { }
-  book:any;
+  username: string;
+  constructor(private tokenStorage: TokenStorageService, private router: Router) { }
+  book: any;
   ngOnInit(): void {
     const user = this.tokenStorage.getUser();
     this.username = user.username;
@@ -22,9 +22,12 @@ export class GuestNavbarComponent implements OnInit {
     window.location.reload();
   }
 
-  saveQueryToSessionStorage(f:NgForm){
-    sessionStorage.setItem("query",String(this.book));
+  saveQueryToSessionStorage(f: NgForm) {
+    sessionStorage.setItem("query", String(this.book));
     this.router.navigate(['guestdashboard/search']);
     f.resetForm();
+  }
+  onselected(value: string) {
+    sessionStorage.setItem("type", value);
   }
 }

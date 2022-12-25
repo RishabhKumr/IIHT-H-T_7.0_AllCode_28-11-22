@@ -30,6 +30,13 @@ export class ReaderSearchComponent implements OnInit {
     })
   
   }
+  else if(this.searchType === "Publisher")
+  {
+    const promise = this.searchService.getBookByPublisher(sessionStorage.getItem('query'));
+    promise.subscribe((response) => {
+      this.books = response as BookInfo[];
+    })
+  }
   else
   {
     this.message = "No Book Found!";

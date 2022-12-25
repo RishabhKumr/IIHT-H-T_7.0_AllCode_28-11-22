@@ -126,6 +126,12 @@ public class BookServiceImpl implements IBookService{
 		authorRepository.save(author);
 		return ResponseEntity.ok("Author registered with book service!");
 	}
+
+	@Override
+	public List<Book> listBookByPublisher(String bookPublisher) {
+		List<Book> book = bookRepository.findByBookPublisher(bookPublisher);
+		return book;
+	}
 	
 	
 

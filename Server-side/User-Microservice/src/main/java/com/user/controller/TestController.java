@@ -95,6 +95,13 @@ public class TestController {
 	  List book = this.restTemplate.getForObject(url, List.class);
 	  return book;
   }
+  
+  @GetMapping("/searchbypublisher/{bookPublisher}")
+  public List<Book> searchBookByPublisher(@PathVariable String bookPublisher){
+	  String url = "http://localhost:8082/book/searchbypublisher/"+bookPublisher;
+	  List book = this.restTemplate.getForObject(url, List.class);
+	  return book;
+  }
   @GetMapping("/search")
   public List<Book> getBookByCategoryTitleAuthorPricePublisher(
 			@RequestParam String bookCategory,
@@ -137,10 +144,19 @@ public class TestController {
   }
   
   @PostMapping("/subscribe/create")
-  public Integer createSubscription(@RequestBody SubscriptionMapperDto subscriptionRequest)
+  public Integer createSubscription(@RequestBody SubscriptionMapperDto subscriptionRequest) throws Exception
   {
+	  Integer subscriptionId = null;
+	  int subscriptionIdCheck = subscriptionService.getSubscriptionIdbyUserIdBookId(subscriptionRequest.getUserId(),subscriptionRequest.getBookId());
+	  System.out.println(subscriptionIdCheck+"------------------------------------------------------------------------");
+	  if(subscriptionIdCheck == 0) {
 	  int id = subscriptionService.createSubcription(subscriptionRequest.getUserId(), subscriptionRequest.getBookId());
-	  Integer subscriptionId = Integer.valueOf(id);
+	  subscriptionId = Integer.valueOf(id);
+	  }
+	  else
+	  {
+		  new Exception("Already Subscribed");
+	  }
 	  return subscriptionId;
   }
   
