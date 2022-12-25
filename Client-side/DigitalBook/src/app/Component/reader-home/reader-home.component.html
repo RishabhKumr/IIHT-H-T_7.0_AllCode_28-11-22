@@ -1,9 +1,9 @@
+
 <div class="outer">
     <h3
         style="background-color: black; color: burlywood; text-align: center; padding-top: 5px;border-bottom:1px solid burlywood;">
         Explore Available Books
-    </h3>
-   
+</h3>
     <ul class="tilesWrap">
         <li *ngFor="let b of books,index as i">
             <h2><img style="" width="70px" height="105px" src="{{b.bookLogo}}"></h2>
@@ -17,7 +17,8 @@
             <p><span>Price - </span>
                 {{b.bookPrice | currency:'EUR'}}
             </p>
-            <button type="button" class="btn btn-success" (click)="subscribeMethod(b)">Subscribe</button>
+            <button  type="button" class="btn btn-success" (click)="subscribeMethod(b)">Subscribe</button>
         </li>
     </ul>
 </div>
+
