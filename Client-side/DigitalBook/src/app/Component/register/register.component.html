@@ -23,8 +23,11 @@
       </div>
 
       <div class="form__group">
-        <input name="roler" type="text" required
-        placeholder="Role" class="form__input" id="exampleInputPassword1"  [(ngModel)]="register.role">
+        <select placeholder="Select Role" name="role" class="form__input" required [(ngModel)]="register.role">
+          <option value="" disabled selected>Select your Role</option>
+          <option value="ROLE_AUTHOR">Author</option>
+          <option value="ROLE_READER">Reader</option>
+        </select>
       </div>
       
       <button type="submit" class="btn btn-primary" [disabled]="!regForm.valid" style="margin-bottom: 10px; background-color: rgb(230, 151, 49);">Sign Up</button>

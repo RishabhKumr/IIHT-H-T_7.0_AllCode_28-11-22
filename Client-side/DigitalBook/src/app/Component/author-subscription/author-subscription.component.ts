@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Book } from 'src/app/entity/Book';
 import { BookInfo } from 'src/app/entity/BookInfo';
 import { SubscribeEntity } from 'src/app/entity/SubscribeEntity';
+import { AuthorService } from 'src/app/service/author.service';
 import { SubscriptionService } from 'src/app/service/subscription.service';
 import { TokenStorageService } from 'src/app/service/token-storage.service';
 import { UserService } from 'src/app/service/user.service';
@@ -18,8 +19,9 @@ export class AuthorSubscriptionComponent implements OnInit {
   subscriptionId:number;
   message:string;
   errorMessage='';
-  constructor(private router:Router,private userService: UserService,private tokenStorage:TokenStorageService,private subscriptionService:SubscriptionService) { }
+  constructor(private authorService:AuthorService,private router:Router,private userService: UserService,private tokenStorage:TokenStorageService,private subscriptionService:SubscriptionService) { }
   books:Book[] = [];
+  createdBooks:Book[] = [];
   ngOnInit(): void {
     console.log(this.tokenStorage.getUser().id);
     const promise = this.subscriptionService.getSubscribedBook(this.tokenStorage.getUser().id);
@@ -27,6 +29,8 @@ export class AuthorSubscriptionComponent implements OnInit {
       this.books = response as Book[];
       console.log(this.books);
     });
+
+    
   }
   subscribeEntity = new SubscribeEntity();
   unsubscribeMethod(book:BookInfo){

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthorCreateBookComponent } from './Component/author-create-book/author-create-book.component';
 import { AuthorDashboardComponent } from './Component/author-dashboard/author-dashboard.component';
 import { AuthorHomeComponent } from './Component/author-home/author-home.component';
+import { AuthorMybooksComponent } from './Component/author-mybooks/author-mybooks.component';
 import { AuthorSearchComponent } from './Component/author-search/author-search.component';
 import { AuthorSubscriptionComponent } from './Component/author-subscription/author-subscription.component';
 import { AuthorUpdateBookComponent } from './Component/author-update-book/author-update-book.component';
@@ -62,6 +63,9 @@ const routes: Routes = [
       },
       {
         path:'search',component:AuthorSearchComponent
+      },
+      {
+        path:'mybooks',component:AuthorMybooksComponent
       }
     ]
   },

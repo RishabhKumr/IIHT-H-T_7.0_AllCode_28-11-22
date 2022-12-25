@@ -30,6 +30,7 @@ import { AuthorUpdateBookComponent } from './Component/author-update-book/author
 import { ReaderHomeComponent } from './Component/reader-home/reader-home.component';
 import { AuthorHomeComponent } from './Component/author-home/author-home.component';
 import { NgxLoadingButtonsModule } from 'ngx-loading-buttons';
+import { AuthorMybooksComponent } from './Component/author-mybooks/author-mybooks.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { NgxLoadingButtonsModule } from 'ngx-loading-buttons';
     AuthorSubscriptionComponent,
     AuthorUpdateBookComponent,
     ReaderHomeComponent,
-    AuthorHomeComponent
+    AuthorHomeComponent,
+    AuthorMybooksComponent
   ],
   imports: [
     BrowserModule,

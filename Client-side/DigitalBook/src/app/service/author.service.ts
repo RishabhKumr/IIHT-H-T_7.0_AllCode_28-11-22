@@ -34,4 +34,8 @@ export class AuthorService {
   getAuthorIdbyName(name:string){
     return this.http.get<number>(API_URL+"getauthoridbyname/"+name);
   }
+
+  getBookListByAuthorId(id:number){
+    return this.http.get(API_URL+"getbooklistbyauthorid/"+id);
+  }
 }
