@@ -151,4 +151,12 @@ public class BookController {
 		List<Book> book = bookService.listBookByPublisher(bookPublisher);
 		return book;
 	}
+	
+	@GetMapping("/getbooklistbyauthor/{id}")
+	public List<Book> getBooksByAuthor(@PathVariable int id){
+		Author author = new Author();
+		author.setAuthorId(id);
+		List<Book> book = bookService.listBookByAuthor(author);
+		return book;
+	}
 }

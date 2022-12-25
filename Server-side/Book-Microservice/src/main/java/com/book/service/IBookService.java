@@ -34,5 +34,7 @@ public interface IBookService {
 	
 	public List<Book> listBookByPublisher(String bookPublisher);
 	
+	public List<Book> listBookByAuthor(Author author);
+	
 	
 }

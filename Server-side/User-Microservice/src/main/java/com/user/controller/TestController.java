@@ -235,4 +235,12 @@ public class TestController {
 		ResponseEntity<String> status = this.restTemplate.exchange(url, HttpMethod.POST,entity, String.class);
 		return status;
   }
+  
+  @GetMapping("/getbooklistbyauthorid/{id}")
+  public List<Book> getbookbyauthorId(@PathVariable int id){
+	  String url = "http://localhost:8082/book/getbooklistbyauthor"+"/"+id;
+	  List book = this.restTemplate.getForObject(url, List.class);
+	  return book;
+	  
+  }
 }

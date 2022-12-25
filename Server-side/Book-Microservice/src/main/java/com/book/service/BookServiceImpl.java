@@ -132,6 +132,12 @@ public class BookServiceImpl implements IBookService{
 		List<Book> book = bookRepository.findByBookPublisher(bookPublisher);
 		return book;
 	}
+
+	@Override
+	public List<Book> listBookByAuthor(Author author) {
+		List<Book> book = bookRepository.findByBookAuthor(author);
+		return book;
+	}
 	
 	
 
