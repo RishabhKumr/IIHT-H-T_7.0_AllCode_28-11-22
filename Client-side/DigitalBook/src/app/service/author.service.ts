@@ -4,7 +4,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Book } from '../entity/Book';
 import { BookDto } from '../entity/BookDto';
-const API_URL = 'http://localhost:8081/api/test/';
+import { SubscribeEntity } from '../entity/SubscribeEntity';
+const API_URL = 'http://ec2-54-161-213-236.compute-1.amazonaws.com:8081/api/test/';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
@@ -37,5 +38,10 @@ export class AuthorService {
 
   getBookListByAuthorId(id:number){
     return this.http.get(API_URL+"getbooklistbyauthorid/"+id);
+  }
+
+  blockBookByUserIdBookId(obj:SubscribeEntity):Observable<string>
+  {
+    return this.http.post<string>(API_URL+"addblock",obj,httpOptions);
   }
 }

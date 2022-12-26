@@ -1,5 +1,5 @@
 input{
-    color: aliceblue;
+    color: rgb(241, 241, 241);
 }
 .page-content {
 	width: 100%;
@@ -27,7 +27,7 @@ input{
 	-webkit-border-radius: 15px;
 	margin: 15px 0;
 	font-family: 'Nunito', sans-serif;
-	color: #fff;
+	color: rgb(26, 23, 23);
 	font-weight: 700;
 	font-size: 16px;
 	position: relative;
@@ -41,7 +41,7 @@ input{
 	text-align: center;
 	position: relative;
 	padding: 16px 0 13px;
-	margin-bottom: 55px;
+	margin-bottom: 35px;
 }
 .form-v9-content .form-detail h2::after {
 	background: #fff;
@@ -73,7 +73,7 @@ input{
 	text-align: center;
 }
 .form-v9-content .form-detail .input-text {
-	margin-bottom: 45px;
+	margin-bottom: 15px;
 }
 .form-v9-content .form-detail input {
 	width: 100%;
@@ -103,7 +103,7 @@ input{
 	border: 2px solid #999;
 }
 .form-v9-content .form-detail .register {
-	background: #f25d5d;
+    background-image: linear-gradient(135deg, #e0ad72 10%, #e76a17 100%);
 	border-radius: 25px;
 	-o-border-radius: 25px;
 	-ms-border-radius: 25px;
@@ -130,7 +130,7 @@ input{
 	padding: 14px;
 }
 input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-  color: #e5e5e5;
+  color: #110a0a;
   font-size: 16px;
 }
 input::-moz-placeholder { /* Firefox 19+ */

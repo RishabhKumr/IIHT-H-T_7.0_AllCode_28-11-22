@@ -31,7 +31,9 @@ import { ReaderHomeComponent } from './Component/reader-home/reader-home.compone
 import { AuthorHomeComponent } from './Component/author-home/author-home.component';
 import { NgxLoadingButtonsModule } from 'ngx-loading-buttons';
 import { AuthorMybooksComponent } from './Component/author-mybooks/author-mybooks.component';
-
+import { AuthorBlockbookComponent } from './Component/author-blockbook/author-blockbook.component';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,14 +61,17 @@ import { AuthorMybooksComponent } from './Component/author-mybooks/author-mybook
     AuthorUpdateBookComponent,
     ReaderHomeComponent,
     AuthorHomeComponent,
-    AuthorMybooksComponent
+    AuthorMybooksComponent,
+    AuthorBlockbookComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    NgxLoadingButtonsModule
+    NgxLoadingButtonsModule,
+    CommonModule,
+    ReactiveFormsModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

@@ -37,8 +37,9 @@ import com.user.service.SendEmail;
 import com.user.service.UserDetailsImpl;
 import com.user.utility.JwtUtils;
 
-@CrossOrigin(origins = "*", maxAge = 3600)
+
 @RestController
+@CrossOrigin(origins = "*",allowedHeaders="*")
 @RequestMapping("/api/auth")
 public class AuthController {
   @Autowired
@@ -148,7 +149,7 @@ public class AuthController {
         }
       });
     }
-    String info = ""+user.getUsername()+"Congratulations!, You have been registered with Digital book. Enjoy Learnings!";
+    String info = ""+user.getUsername()+" Congratulations!, You have been registered with Digital book. Enjoy Learnings!";
     user.setRoles(roles);
 //    if(rolefordto.equals("ROLE_AUTHOR")) {
 //    	AuthorDto authorDto = new AuthorDto();

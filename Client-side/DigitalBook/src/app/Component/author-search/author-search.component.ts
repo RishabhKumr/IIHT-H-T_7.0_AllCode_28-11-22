@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Book } from 'src/app/entity/Book';
 import { BookInfo } from 'src/app/entity/BookInfo';
 import { SubscribeEntity } from 'src/app/entity/SubscribeEntity';
+import { AuthorService } from 'src/app/service/author.service';
 import { SearchService } from 'src/app/service/search.service';
 import { SubscriptionService } from 'src/app/service/subscription.service';
 import { TokenStorageService } from 'src/app/service/token-storage.service';
@@ -13,7 +15,7 @@ import { UserService } from 'src/app/service/user.service';
 })
 export class AuthorSearchComponent implements OnInit {
   books:BookInfo[]=[];
-  constructor(private searchService:SearchService,private userService: UserService, private tokenStorage: TokenStorageService,private subscriptionService:SubscriptionService) { }
+  constructor(private authorService:AuthorService,private searchService:SearchService,private userService: UserService, private tokenStorage: TokenStorageService,private subscriptionService:SubscriptionService) { }
   searchType:string;
   message:string;
   ngOnInit(): void {
@@ -72,5 +74,15 @@ export class AuthorSearchComponent implements OnInit {
       alert("Subscription failed");
      }
      )
+  }
+  subscribe = new SubscribeEntity();
+  blockBook(b:BookInfo){
+    this.subscribe.bookId = b.bookId;
+    this.subscribe.userId = Number(this.tokenStorage.getUser().id);
+    this.authorService.blockBookByUserIdBookId(this.subscribe)
+    .subscribe((Response)=>{
+      alert("Book Blocked! "+Response);
+    })
+    alert("Book Blocked! ");
   }
 }

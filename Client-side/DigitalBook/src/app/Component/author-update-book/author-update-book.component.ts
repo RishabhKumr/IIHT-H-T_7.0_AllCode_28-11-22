@@ -48,10 +48,10 @@ export class AuthorUpdateBookComponent implements OnInit {
     this.authorService.updateBook(this.book,this.book.bookId)
     .subscribe(data=>{
       this.bookName = data;
+      alert("Book "+this.bookName+" Updated!");
     })
     console.log(this.book);
     f.resetForm();
-    alert("Book "+this.bookName+" Updated!");
   }
 
 }

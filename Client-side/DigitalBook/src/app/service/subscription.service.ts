@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { SubscribeEntity } from '../entity/SubscribeEntity';
-const API_URL = 'http://localhost:8081/api/test/';
+const API_URL = 'http://ec2-54-161-213-236.compute-1.amazonaws.com:8081/api/test/';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };

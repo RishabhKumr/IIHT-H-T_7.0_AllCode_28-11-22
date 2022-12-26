@@ -1,5 +1,6 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthorBlockbookComponent } from './Component/author-blockbook/author-blockbook.component';
 import { AuthorCreateBookComponent } from './Component/author-create-book/author-create-book.component';
 import { AuthorDashboardComponent } from './Component/author-dashboard/author-dashboard.component';
 import { AuthorHomeComponent } from './Component/author-home/author-home.component';
@@ -66,6 +67,9 @@ const routes: Routes = [
       },
       {
         path:'mybooks',component:AuthorMybooksComponent
+      },
+      {
+        path:'blockedbooks',component:AuthorBlockbookComponent
       }
     ]
   },

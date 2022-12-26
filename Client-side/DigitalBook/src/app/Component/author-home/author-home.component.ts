@@ -20,11 +20,14 @@ export class AuthorHomeComponent implements OnInit {
   authorName:string;
   constructor(private userService: UserService,private authorService:AuthorService, private tokenStorage: TokenStorageService, private router: Router,private subscriptionService:SubscriptionService) { }
   books:BookInfo[] = [];
+  checkBook:BookInfo[]=[];
+  subscriberObj = new SubscribeEntity();
+  message:string;
   ngOnInit(): void {
+    
     const promise = this.userService.getAllBook();
       promise.subscribe( (response) => {
           this.books = response as BookInfo[];
-          console.log(this.books);
         });
   }
  

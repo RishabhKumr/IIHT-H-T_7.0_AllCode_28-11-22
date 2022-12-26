@@ -1,7 +1,6 @@
 package com.user.controller;
 
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -27,13 +26,16 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import com.user.dto.SubscriptionMapperDto;
+import com.user.entity.Block;
 import com.user.entity.Subscription;
 import com.user.entity.book.Book;
+import com.user.repository.IBlockRepository;
 import com.user.service.IBlockService;
 import com.user.service.ISubscriptionService;
 
-@CrossOrigin(origins = "*", maxAge = 3600)
+
 @RestController
+@CrossOrigin(origins = "*",allowedHeaders="*")
 @RequestMapping("/api/test")
 public class TestController {
 	@Autowired
@@ -44,6 +46,9 @@ public class TestController {
 	
 	@Autowired
 	IBlockService blockService;
+	
+	@Autowired
+	IBlockRepository  blockRepo;
 	
   @GetMapping("/all")
   public List<Book> allAccess() {
@@ -199,6 +204,18 @@ public class TestController {
 	  }
 	  return bookList;
   }
+  
+  @GetMapping("/blockedbooks/{userId}")
+  public List<Optional> allBlockedbooksbyid(@PathVariable int userId){
+	  List<Optional> bookList = new ArrayList<>();
+	  List<Block> blockList = blockRepo.findByUserId(userId);
+	  for(int i=0;i<blockList.size();i++) {
+		  String url="http://localhost:8082/book/getAllBookDetails/"+blockList.get(i).getBookId();
+		  Optional  book = this.restTemplate.getForObject(url, Optional.class);
+		  bookList.add(book);
+	  }
+	  return bookList;
+  }
   @GetMapping("/searchforupdate/{bookTitle}")
   public Integer getBookBytitleupdate(@PathVariable String bookTitle){
 	  String url = "http://localhost:8082/book/getbookid"+"/"+bookTitle;
@@ -241,6 +258,6 @@ public class TestController {
 	  String url = "http://localhost:8082/book/getbooklistbyauthor"+"/"+id;
 	  List book = this.restTemplate.getForObject(url, List.class);
 	  return book;
-	  
   }
+  
 }
