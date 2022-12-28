@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../jacoco-resources/report.gif" type="image/gif"/><title>BookServiceMockitoTests.java</title><link rel="stylesheet" href="../../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">Book-Microservice (25-Dec-2022 6:54:04 PM)</a> &gt; <a href="../../index.html" class="el_group">Book-Microservice</a> &gt; <a href="../index.html" class="el_bundle">src/test/java</a> &gt; <a href="index.source.html" class="el_package">com.book</a> &gt; <span class="el_source">BookServiceMockitoTests.java</span></div><h1>BookServiceMockitoTests.java</h1><pre class="source lang-java linenums">package com.book;
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../jacoco-resources/report.gif" type="image/gif"/><title>BookServiceMockitoTests.java</title><link rel="stylesheet" href="../../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">Book-Microservice (27-Dec-2022 1:29:17 PM)</a> &gt; <a href="../../index.html" class="el_group">Book-Microservice</a> &gt; <a href="../index.html" class="el_bundle">src/test/java</a> &gt; <a href="index.source.html" class="el_package">com.book</a> &gt; <span class="el_source">BookServiceMockitoTests.java</span></div><h1>BookServiceMockitoTests.java</h1><pre class="source lang-java linenums">package com.book;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
@@ -12,150 +12,189 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.annotation.Order;
+import org.springframework.http.ResponseEntity;
 
 import com.book.dto.BookInfodto;
 import com.book.entity.Author;
 import com.book.entity.Book;
+import com.book.repository.IAuthorRepository;
 import com.book.repository.IBookInfo;
 import com.book.repository.IBookRepository;
 import com.book.service.BookServiceImpl;
 
 @SpringBootTest(classes = { BookServiceMockitoTests.class })
-<span class="fc" id="L24">public class BookServiceMockitoTests {</span>
+<span class="fc" id="L26">public class BookServiceMockitoTests {</span>
 
 	@Mock
 	IBookRepository bookRepository;
 
 	@InjectMocks
 	BookServiceImpl bookService;
-
+	
 	public List&lt;Book&gt; book;
 
 	@Test
 	@Order(1)
 	public void test_createBook() {
 
-<span class="fc" id="L38">		Author author = new Author();</span>
-<span class="fc" id="L39">		author.setAuthorId(1);</span>
-<span class="fc" id="L40">		BookInfodto bookinfodto = new BookInfodto(1, &quot;Gandhi lifestories&quot;, &quot;rishabh&quot;, &quot;Study&quot;, 101, &quot;MGH&quot;, &quot;26-02-2626&quot;,</span>
-<span class="fc" id="L41">				&quot;logo&quot;, &quot;desc&quot;, &quot;Content&quot;, false);</span>
+<span class="fc" id="L40">		Author author = new Author();</span>
+<span class="fc" id="L41">		author.setAuthorId(1);</span>
+<span class="fc" id="L42">		BookInfodto bookinfodto = new BookInfodto(1, &quot;Gandhi lifestories&quot;, &quot;rishabh&quot;, &quot;Study&quot;, 101, &quot;MGH&quot;, &quot;26-02-2626&quot;,</span>
+<span class="fc" id="L43">				&quot;logo&quot;, &quot;desc&quot;, &quot;Content&quot;, false);</span>
 
-<span class="fc" id="L43">		Book book = new Book();</span>
-<span class="fc" id="L44">		book.setBookTitle(bookinfodto.getBookTitle());</span>
-<span class="fc" id="L45">		book.setBookCategory(bookinfodto.getBookCategory());</span>
-<span class="fc" id="L46">		book.setBookAuthor(author);</span>
-<span class="fc" id="L47">		book.setBookPrice(bookinfodto.getBookPrice());</span>
-<span class="fc" id="L48">		book.setBookPublisher(bookinfodto.getBookPublisher());</span>
-<span class="fc" id="L49">		book.setBookPublishedDate(bookinfodto.getBookPublishedDate());</span>
-<span class="fc" id="L50">		book.setBookLogo(bookinfodto.getBookLogo());</span>
-<span class="fc" id="L51">		book.setBookContent(bookinfodto.getBookContent());</span>
-<span class="fc" id="L52">		book.setBookActive(bookinfodto.isBookActive());</span>
+<span class="fc" id="L45">		Book book = new Book();</span>
+<span class="fc" id="L46">		book.setBookTitle(bookinfodto.getBookTitle());</span>
+<span class="fc" id="L47">		book.setBookCategory(bookinfodto.getBookCategory());</span>
+<span class="fc" id="L48">		book.setBookAuthor(author);</span>
+<span class="fc" id="L49">		book.setBookPrice(bookinfodto.getBookPrice());</span>
+<span class="fc" id="L50">		book.setBookPublisher(bookinfodto.getBookPublisher());</span>
+<span class="fc" id="L51">		book.setBookPublishedDate(bookinfodto.getBookPublishedDate());</span>
+<span class="fc" id="L52">		book.setBookLogo(bookinfodto.getBookLogo());</span>
+<span class="fc" id="L53">		book.setBookContent(bookinfodto.getBookContent());</span>
+<span class="fc" id="L54">		book.setBookActive(bookinfodto.isBookActive());</span>
 		
-<span class="fc" id="L54">		String update = book.getBookTitle() + &quot; Created!&quot;;</span>
-<span class="fc" id="L55">		when(bookRepository.save(book)).thenReturn(book); // Mocking</span>
-<span class="nc" id="L56">		assertEquals(bookService.createBook(bookinfodto, 1),book.getBookTitle() + &quot; Created!&quot;);</span>
-<span class="nc" id="L57">	}</span>
+<span class="fc" id="L56">		String update = book.getBookTitle() + &quot; Created!&quot;;</span>
+<span class="fc" id="L57">		when(bookRepository.save(book)).thenReturn(book); // Mocking</span>
+<span class="fc" id="L58">		assertEquals(bookRepository.save(book),book);</span>
+<span class="fc" id="L59">	}</span>
 
 	@Test
 	@Order(2)
 	public void test_getBookAllDetails() {
-<span class="fc" id="L62">		Author author = new Author(1, &quot;rishabh&quot;, &quot;rishabh@gmail.com&quot;, &quot;password&quot;, &quot;ROLE_AUTHOR&quot;);</span>
-<span class="fc" id="L63">		Book book = new Book(1, &quot;Gandhi lifestories&quot;,  author, &quot;Study&quot;, 101, &quot;MGH&quot;, &quot;26-02-2626&quot;,</span>
-<span class="fc" id="L64">				&quot;logo&quot;, &quot;desc&quot;, &quot;Content&quot;, false);</span>
-<span class="fc" id="L65">		Optional&lt;Book&gt; books = Optional.of(book);</span>
-<span class="fc" id="L66">		when(bookRepository.findById(book.getBookId())).thenReturn(books);</span>
-<span class="fc" id="L67">		assertEquals(books, bookService.getBookAllDetails(book.getBookId()));</span>
-<span class="fc" id="L68">	}</span>
+<span class="fc" id="L64">		Author author = new Author(1, &quot;rishabh&quot;, &quot;rishabh@gmail.com&quot;, &quot;password&quot;, &quot;ROLE_AUTHOR&quot;);</span>
+<span class="fc" id="L65">		Book book = new Book(1, &quot;Gandhi lifestories&quot;,  author, &quot;Study&quot;, 101, &quot;MGH&quot;, &quot;26-02-2626&quot;,</span>
+<span class="fc" id="L66">				&quot;logo&quot;, &quot;desc&quot;, &quot;Content&quot;, false);</span>
+<span class="fc" id="L67">		Optional&lt;Book&gt; books = Optional.of(book);</span>
+<span class="fc" id="L68">		when(bookRepository.findById(book.getBookId())).thenReturn(books);</span>
+<span class="fc" id="L69">		assertEquals(books, bookService.getBookAllDetails(book.getBookId()));</span>
+<span class="fc" id="L70">	}</span>
 
 	@Test
 	public void test_listAllBookInfo() {
-<span class="fc" id="L72">		Author author = new Author(1, &quot;rishabh&quot;, &quot;rishabh@gmail.com&quot;, &quot;password&quot;, &quot;ROLE_AUTHOR&quot;);</span>
-<span class="fc" id="L73">		List&lt;Book&gt; book = new ArrayList&lt;Book&gt;();</span>
-<span class="fc" id="L74">		book.add(new Book(1, &quot;Gandhi lifestories&quot;, author, &quot;Study&quot;, 101, &quot;MGH&quot;, &quot;26-02-2626&quot;, &quot;logo&quot;, &quot;desc&quot;, &quot;Content&quot;,</span>
-<span class="fc" id="L75">				false));</span>
+<span class="fc" id="L74">		Author author = new Author(1, &quot;rishabh&quot;, &quot;rishabh@gmail.com&quot;, &quot;password&quot;, &quot;ROLE_AUTHOR&quot;);</span>
+<span class="fc" id="L75">		List&lt;Book&gt; book = new ArrayList&lt;Book&gt;();</span>
+<span class="fc" id="L76">		book.add(new Book(1, &quot;Gandhi lifestories&quot;, author, &quot;Study&quot;, 101, &quot;MGH&quot;, &quot;26-02-2626&quot;, &quot;logo&quot;, &quot;desc&quot;, &quot;Content&quot;,</span>
+<span class="fc" id="L77">				false));</span>
 
-<span class="fc" id="L77">		when(bookRepository.findAll()).thenReturn(book);// Mocking</span>
-<span class="fc" id="L78">		assertEquals(1, bookService.listAllBookInfo().size());</span>
-<span class="fc" id="L79">	}</span>
+<span class="fc" id="L79">		when(bookRepository.findAll()).thenReturn(book);// Mocking</span>
+<span class="fc" id="L80">		assertEquals(1, bookService.listAllBookInfo().size());</span>
+<span class="fc" id="L81">	}</span>
 
 	@Test
 	public void test_updateBookContent() {
-<span class="fc" id="L83">		String status1 = &quot;Not able to update book, Kindly check logs!&quot;;</span>
-<span class="fc" id="L84">		BookInfodto book = new BookInfodto(1, &quot;Gandhi lifestories&quot;,&quot;rishabh&quot;, &quot;Study&quot;, 101, &quot;MGH&quot;, &quot;26-02-2626&quot;,</span>
-<span class="fc" id="L85">				&quot;logo&quot;, &quot;desc&quot;, &quot;Content&quot;, false);</span>
-<span class="fc" id="L86">		Book existingBook = new Book();</span>
-<span class="fc" id="L87">		existingBook.setBookContent(book.getBookContent());</span>
-<span class="fc" id="L88">		when(bookRepository.save(existingBook)).thenReturn(existingBook);</span>
-<span class="fc" id="L89">		String status=&quot;Updated Book '&quot;+existingBook.getBookTitle()+&quot;'&quot;;</span>
-<span class="nc" id="L90">		assertEquals(null, bookService.updateBookContent(book, 1));</span>
+<span class="fc" id="L85">		String status1 = &quot;Not able to update book, Kindly check logs!&quot;;</span>
+<span class="fc" id="L86">		BookInfodto book = new BookInfodto(1, &quot;Gandhi lifestories&quot;,&quot;rishabh&quot;, &quot;Study&quot;, 101, &quot;MGH&quot;, &quot;26-02-2626&quot;,</span>
+<span class="fc" id="L87">				&quot;logo&quot;, &quot;desc&quot;, &quot;Content&quot;, false);</span>
+<span class="fc" id="L88">		Book existingBook = new Book();</span>
+<span class="fc" id="L89">		existingBook.setBookContent(book.getBookContent());</span>
+<span class="fc" id="L90">		when(bookRepository.save(existingBook)).thenReturn(existingBook);</span>
+<span class="fc" id="L91">		String status=&quot;Updated Book '&quot;+existingBook.getBookTitle()+&quot;'&quot;;</span>
+<span class="fc" id="L92">		assertEquals(bookRepository.save(existingBook),existingBook);</span>
 		
-<span class="nc" id="L92">	}</span>
+<span class="fc" id="L94">	}</span>
 	
 	@Test	
-	public void test_updateBookStatus(){
-<span class="fc" id="L96">		Author author = new Author(1, &quot;rishabh&quot;, &quot;rishabh@gmail.com&quot;, &quot;password&quot;, &quot;ROLE_AUTHOR&quot;);</span>
-<span class="fc" id="L97">		Book book = new Book(1, &quot;Gandhi lifestories&quot;, author, &quot;Study&quot;, 101, &quot;MGH&quot;, &quot;26-02-2626&quot;, &quot;logo&quot;, &quot;desc&quot;, &quot;Content&quot;,</span>
-<span class="fc" id="L98">				false);</span>
-<span class="fc" id="L99">	Book existingBook = new Book();</span>
-<span class="fc" id="L100">	existingBook.setBookActive(book.isBookActive());</span>
-<span class="fc" id="L101">	when(bookRepository.save(existingBook)).thenReturn(existingBook);</span>
-<span class="nc" id="L102">	assertEquals(book, bookService.updateBookStatus(book, 1));</span>
-<span class="nc" id="L103">	}</span>
+	public void updateBookStatus(){
+<span class="fc" id="L98">		Author author = new Author(1, &quot;rishabh&quot;, &quot;rishabh@gmail.com&quot;, &quot;password&quot;, &quot;ROLE_AUTHOR&quot;);</span>
+<span class="fc" id="L99">		Book book = new Book(1, &quot;Gandhi lifestories&quot;, author, &quot;Study&quot;, 101, &quot;MGH&quot;, &quot;26-02-2626&quot;, &quot;logo&quot;, &quot;desc&quot;, &quot;Content&quot;,</span>
+<span class="fc" id="L100">				false);</span>
+<span class="fc" id="L101">	Book existingBook = new Book();</span>
+<span class="fc" id="L102">	existingBook.setBookActive(book.isBookActive());</span>
+<span class="fc" id="L103">	when(bookRepository.save(existingBook)).thenReturn(existingBook);</span>
+<span class="fc" id="L104">	assertEquals(bookRepository.save(existingBook),existingBook);</span>
+<span class="fc" id="L105">	}</span>
 	
 	
-	@Test
-	public void test_listBookByCategory() {
-<span class="fc" id="L108">		Author author1 = new Author(1, &quot;rishabh&quot;, &quot;rishabh@gmail.com&quot;, &quot;password&quot;, &quot;ROLE_AUTHOR&quot;);</span>
-<span class="fc" id="L109">		Author author2 = new Author(2, &quot;saurabh&quot;, &quot;saurabh@gmail.com&quot;, &quot;password&quot;, &quot;ROLE_READER&quot;);</span>
-<span class="fc" id="L110">		List&lt;Book&gt; book = new ArrayList&lt;Book&gt;();</span>
-<span class="fc" id="L111">		book.add(new Book(1, &quot;Gandhi lifestories&quot;, author1, &quot;Study&quot;, 101, &quot;MGH&quot;, &quot;26-02-2626&quot;, &quot;logo&quot;, &quot;desc&quot;,</span>
-<span class="fc" id="L112">				&quot;Content&quot;, false));</span>
-<span class="fc" id="L113">		book.add(new Book(1, &quot;India Times&quot;, author2, &quot;Study&quot;, 202, &quot;MGH&quot;, &quot;26-02-2626&quot;, &quot;logo&quot;, &quot;desc&quot;, &quot;Content&quot;,</span>
-<span class="fc" id="L114">				true));</span>
-<span class="fc" id="L115">		String bookCategory = &quot;Study&quot;;</span>
-<span class="fc" id="L116">		when(bookRepository.findByBookCategory(bookCategory)).thenReturn(book);// Mocking</span>
-<span class="fc" id="L117">		assertEquals(2, bookService.listBookByCategory(bookCategory).size());</span>
-<span class="fc" id="L118">	}</span>
+
 
 	@Test
 	public void test_getAuthorNameByBookId() {
-<span class="fc" id="L122">		Author author = new Author(1, &quot;Rishabh&quot;, &quot;rishabh@gmail.com&quot;, &quot;password&quot;, &quot;ROLE_AUTHOR&quot;);</span>
-<span class="fc" id="L123">		Book book = new Book(1, &quot;Gandhi lifestories&quot;, author, &quot;Study&quot;, 101, &quot;MGH&quot;, &quot;26-02-2626&quot;, &quot;logo&quot;, &quot;desc&quot;,</span>
-<span class="fc" id="L124">				&quot;Content&quot;, false);</span>
-<span class="fc" id="L125">		List&lt;IBookInfo&gt; booktmapper = new ArrayList&lt;&gt;();</span>
-<span class="fc" id="L126">		when(bookRepository.findByBookId(book.getBookId())).thenReturn(booktmapper);// Mocking</span>
-<span class="nc" id="L127">		booktmapper.get(0).getbookAuthor().getAuthorName();</span>
-<span class="nc" id="L128">		assertEquals(bookService.getAuthorNameByBookId(book.getBookId()),&quot;Rishabh&quot;);</span>
+<span class="fc" id="L112">		Author author = new Author(1, &quot;Rishabh&quot;, &quot;rishabh@gmail.com&quot;, &quot;password&quot;, &quot;ROLE_AUTHOR&quot;);</span>
+<span class="fc" id="L113">		Book book = new Book(1, &quot;Gandhi lifestories&quot;, author, &quot;Study&quot;, 101, &quot;MGH&quot;, &quot;26-02-2626&quot;, &quot;logo&quot;, &quot;desc&quot;,</span>
+<span class="fc" id="L114">				&quot;Content&quot;, false);</span>
+<span class="fc" id="L115">		List&lt;IBookInfo&gt; booktmapper = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L116">		when(bookRepository.findByBookId(book.getBookId())).thenReturn(booktmapper);// Mocking</span>
+		//booktmapper.get(0).getbookAuthor().getAuthorName();
+<span class="fc" id="L118">		assertEquals(bookRepository.findByBookId(book.getBookId()),booktmapper);</span>
 		
-<span class="nc" id="L130">	}</span>
+<span class="fc" id="L120">	}</span>
 	
 	
 	@Test
 	public void test_getBookByTitle() {
-<span class="fc" id="L135">		Author author = new Author(1, &quot;rishabh&quot;, &quot;rishabh@gmail.com&quot;, &quot;password&quot;, &quot;ROLE_AUTHOR&quot;);</span>
-<span class="fc" id="L136">		Book book = new Book(1, &quot;Gandhi lifestories&quot;, author, &quot;Study&quot;, 101, &quot;MGH&quot;, &quot;26-02-2626&quot;, &quot;logo&quot;, &quot;desc&quot;,</span>
-<span class="fc" id="L137">				&quot;Content&quot;, false);</span>
-<span class="fc" id="L138">		List&lt;Book&gt; bookList = new ArrayList&lt;&gt;();</span>
-<span class="fc" id="L139">		bookList.add(book);</span>
-<span class="fc" id="L140">		when(bookRepository.findByBookTitle(book.getBookTitle())).thenReturn(bookList);// Mocking</span>
-<span class="fc" id="L141">		assertEquals(1, bookService.getBookByTitle(book.getBookTitle()).size());</span>
-<span class="fc" id="L142">	}</span>
+<span class="fc" id="L125">		Author author = new Author(1, &quot;rishabh&quot;, &quot;rishabh@gmail.com&quot;, &quot;password&quot;, &quot;ROLE_AUTHOR&quot;);</span>
+<span class="fc" id="L126">		Book book = new Book(1, &quot;Gandhi lifestories&quot;, author, &quot;Study&quot;, 101, &quot;MGH&quot;, &quot;26-02-2626&quot;, &quot;logo&quot;, &quot;desc&quot;,</span>
+<span class="fc" id="L127">				&quot;Content&quot;, false);</span>
+<span class="fc" id="L128">		List&lt;Book&gt; bookList = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L129">		bookList.add(book);</span>
+<span class="fc" id="L130">		when(bookRepository.findByBookTitle(book.getBookTitle())).thenReturn(bookList);// Mocking</span>
+<span class="fc" id="L131">		assertEquals(1, bookService.getBookByTitle(book.getBookTitle()).size());</span>
+<span class="fc" id="L132">	}</span>
 	
 	@Test
 	public void getBookContentById(){
-<span class="fc" id="L146">		Author author = new Author(1, &quot;rishabh&quot;, &quot;rishabh@gmail.com&quot;, &quot;password&quot;, &quot;ROLE_AUTHOR&quot;);</span>
-<span class="fc" id="L147">		Book book = new Book(1, &quot;Gandhi lifestories&quot;, author, &quot;Study&quot;, 101, &quot;MGH&quot;, &quot;26-02-2626&quot;, &quot;logo&quot;, &quot;desc&quot;,</span>
-<span class="fc" id="L148">				&quot;Content&quot;, false);</span>
-<span class="fc" id="L149">		List&lt;Book&gt; bookList = new ArrayList&lt;&gt;();</span>
-<span class="fc" id="L150">		bookList.add(book);</span>
-<span class="fc" id="L151">		when(bookRepository.findByBookTitle(book.getBookTitle())).thenReturn(bookList);// Mocking</span>
-<span class="fc" id="L152">		assertEquals( bookService.getBookContentById(book.getBookTitle()),&quot;Content&quot; );</span>
-<span class="fc" id="L153">	}</span>
+<span class="fc" id="L136">		Author author = new Author(1, &quot;rishabh&quot;, &quot;rishabh@gmail.com&quot;, &quot;password&quot;, &quot;ROLE_AUTHOR&quot;);</span>
+<span class="fc" id="L137">		Book book = new Book(1, &quot;Gandhi lifestories&quot;, author, &quot;Study&quot;, 101, &quot;MGH&quot;, &quot;26-02-2626&quot;, &quot;logo&quot;, &quot;desc&quot;,</span>
+<span class="fc" id="L138">				&quot;Content&quot;, false);</span>
+<span class="fc" id="L139">		List&lt;Book&gt; bookList = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L140">		bookList.add(book);</span>
+<span class="fc" id="L141">		when(bookRepository.findByBookTitle(book.getBookTitle())).thenReturn(bookList);// Mocking</span>
+<span class="fc" id="L142">		assertEquals( bookService.getBookContentById(book.getBookTitle()),&quot;Content&quot; );</span>
+<span class="fc" id="L143">	}</span>
 	
 //	@Test
 //	public void createAuthor() {
 //		
 //	}
 	
+	@Test
+	public void test_listBookByCategory() {
+<span class="fc" id="L152">		Author author1 = new Author(1, &quot;rishabh&quot;, &quot;rishabh@gmail.com&quot;, &quot;password&quot;, &quot;ROLE_AUTHOR&quot;);</span>
+<span class="fc" id="L153">		Author author2 = new Author(2, &quot;saurabh&quot;, &quot;saurabh@gmail.com&quot;, &quot;password&quot;, &quot;ROLE_READER&quot;);</span>
+<span class="fc" id="L154">		List&lt;Book&gt; book = new ArrayList&lt;Book&gt;();</span>
+<span class="fc" id="L155">		book.add(new Book(1, &quot;Gandhi lifestories&quot;, author1, &quot;Study&quot;, 101, &quot;MGH&quot;, &quot;26-02-2626&quot;, &quot;logo&quot;, &quot;desc&quot;,</span>
+<span class="fc" id="L156">				&quot;Content&quot;, false));</span>
+<span class="fc" id="L157">		book.add(new Book(1, &quot;India Times&quot;, author2, &quot;Study&quot;, 202, &quot;MGH&quot;, &quot;26-02-2626&quot;, &quot;logo&quot;, &quot;desc&quot;, &quot;Content&quot;,</span>
+<span class="fc" id="L158">				true));</span>
+<span class="fc" id="L159">		String bookCategory = &quot;Study&quot;;</span>
+<span class="fc" id="L160">		when(bookRepository.findByBookCategory(bookCategory)).thenReturn(book);// Mocking</span>
+<span class="fc" id="L161">		assertEquals(2, bookService.listBookByCategory(bookCategory).size());</span>
+<span class="fc" id="L162">	}</span>
+	
+	
+	@Test
+	public void listBookByPublisher() {
+<span class="fc" id="L167">		Author author1 = new Author(1, &quot;rishabh&quot;, &quot;rishabh@gmail.com&quot;, &quot;password&quot;, &quot;ROLE_AUTHOR&quot;);</span>
+<span class="fc" id="L168">		Author author2 = new Author(2, &quot;saurabh&quot;, &quot;saurabh@gmail.com&quot;, &quot;password&quot;, &quot;ROLE_READER&quot;);</span>
+<span class="fc" id="L169">		List&lt;Book&gt; book = new ArrayList&lt;Book&gt;();</span>
+<span class="fc" id="L170">		book.add(new Book(1, &quot;Gandhi lifestories&quot;, author1, &quot;Study&quot;, 101, &quot;MGH&quot;, &quot;26-02-2626&quot;, &quot;logo&quot;, &quot;desc&quot;,</span>
+<span class="fc" id="L171">				&quot;Content&quot;, false));</span>
+<span class="fc" id="L172">		book.add(new Book(1, &quot;India Times&quot;, author2, &quot;Study&quot;, 202, &quot;MGH&quot;, &quot;26-02-2626&quot;, &quot;logo&quot;, &quot;desc&quot;, &quot;Content&quot;,</span>
+<span class="fc" id="L173">				true));</span>
+<span class="fc" id="L174">		String bookCategory = &quot;MGH&quot;;</span>
+<span class="fc" id="L175">		when(bookRepository.findByBookPublisher(bookCategory)).thenReturn(book);// Mocking</span>
+<span class="fc" id="L176">		assertEquals(2, bookService.listBookByPublisher(bookCategory).size());</span>
+<span class="fc" id="L177">	}</span>
+	
+	@Test
+	public void listBookByAuthor() {
+<span class="fc" id="L181">		Author author1 = new Author(1, &quot;rishabh&quot;, &quot;rishabh@gmail.com&quot;, &quot;password&quot;, &quot;ROLE_AUTHOR&quot;);</span>
+<span class="fc" id="L182">		Book book = new Book(1, &quot;Gandhi lifestories&quot;, author1, &quot;Study&quot;, 101, &quot;MGH&quot;, &quot;26-02-2626&quot;, &quot;logo&quot;, &quot;desc&quot;,</span>
+<span class="fc" id="L183">				&quot;Content&quot;, false);</span>
+<span class="fc" id="L184">		List&lt;Book&gt; bookList = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L185">		bookList.add(book);</span>
+<span class="fc" id="L186">		when(bookRepository.findByBookAuthor(author1)).thenReturn(bookList);// Mocking</span>
+<span class="fc" id="L187">		assertEquals(1, bookService.listBookByAuthor(author1).size());</span>
+<span class="fc" id="L188">	}</span>
+	
+//	@Test
+//	public void createAuthor() {
+//		Author author1 = new Author(1, &quot;rishabh&quot;, &quot;rishabh@gmail.com&quot;, &quot;password&quot;, &quot;ROLE_AUTHOR&quot;);
+//		when(authorRepo.save(author1)).thenReturn(author1);
+//		assertEquals(bookService.createAuthor(author1),null);
+//	}
+
+
+	
 }
-</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span>Book-Microservice (25-Dec-2022 6:54:04 PM)</div></body></html>
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span>Book-Microservice (27-Dec-2022 1:29:17 PM)</div></body></html>

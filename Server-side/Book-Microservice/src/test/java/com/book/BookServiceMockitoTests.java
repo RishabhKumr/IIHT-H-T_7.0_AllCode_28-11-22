@@ -12,10 +12,12 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.annotation.Order;
+import org.springframework.http.ResponseEntity;
 
 import com.book.dto.BookInfodto;
 import com.book.entity.Author;
 import com.book.entity.Book;
+import com.book.repository.IAuthorRepository;
 import com.book.repository.IBookInfo;
 import com.book.repository.IBookRepository;
 import com.book.service.BookServiceImpl;
@@ -28,7 +30,7 @@ public class BookServiceMockitoTests {
 
 	@InjectMocks
 	BookServiceImpl bookService;
-
+	
 	public List<Book> book;
 
 	@Test
@@ -92,7 +94,7 @@ public class BookServiceMockitoTests {
 	}
 	
 	@Test	
-	public void test_updateBookStatus(){
+	public void updateBookStatus(){
 		Author author = new Author(1, "rishabh", "rishabh@gmail.com", "password", "ROLE_AUTHOR");
 		Book book = new Book(1, "Gandhi lifestories", author, "Study", 101, "MGH", "26-02-2626", "logo", "desc", "Content",
 				false);
@@ -103,19 +105,7 @@ public class BookServiceMockitoTests {
 	}
 	
 	
-	@Test
-	public void test_listBookByCategory() {
-		Author author1 = new Author(1, "rishabh", "rishabh@gmail.com", "password", "ROLE_AUTHOR");
-		Author author2 = new Author(2, "saurabh", "saurabh@gmail.com", "password", "ROLE_READER");
-		List<Book> book = new ArrayList<Book>();
-		book.add(new Book(1, "Gandhi lifestories", author1, "Study", 101, "MGH", "26-02-2626", "logo", "desc",
-				"Content", false));
-		book.add(new Book(1, "India Times", author2, "Study", 202, "MGH", "26-02-2626", "logo", "desc", "Content",
-				true));
-		String bookCategory = "Study";
-		when(bookRepository.findByBookCategory(bookCategory)).thenReturn(book);// Mocking
-		assertEquals(2, bookService.listBookByCategory(bookCategory).size());
-	}
+
 
 	@Test
 	public void test_getAuthorNameByBookId() {
@@ -156,5 +146,54 @@ public class BookServiceMockitoTests {
 //	public void createAuthor() {
 //		
 //	}
+	
+	@Test
+	public void test_listBookByCategory() {
+		Author author1 = new Author(1, "rishabh", "rishabh@gmail.com", "password", "ROLE_AUTHOR");
+		Author author2 = new Author(2, "saurabh", "saurabh@gmail.com", "password", "ROLE_READER");
+		List<Book> book = new ArrayList<Book>();
+		book.add(new Book(1, "Gandhi lifestories", author1, "Study", 101, "MGH", "26-02-2626", "logo", "desc",
+				"Content", false));
+		book.add(new Book(1, "India Times", author2, "Study", 202, "MGH", "26-02-2626", "logo", "desc", "Content",
+				true));
+		String bookCategory = "Study";
+		when(bookRepository.findByBookCategory(bookCategory)).thenReturn(book);// Mocking
+		assertEquals(2, bookService.listBookByCategory(bookCategory).size());
+	}
+	
+	
+	@Test
+	public void listBookByPublisher() {
+		Author author1 = new Author(1, "rishabh", "rishabh@gmail.com", "password", "ROLE_AUTHOR");
+		Author author2 = new Author(2, "saurabh", "saurabh@gmail.com", "password", "ROLE_READER");
+		List<Book> book = new ArrayList<Book>();
+		book.add(new Book(1, "Gandhi lifestories", author1, "Study", 101, "MGH", "26-02-2626", "logo", "desc",
+				"Content", false));
+		book.add(new Book(1, "India Times", author2, "Study", 202, "MGH", "26-02-2626", "logo", "desc", "Content",
+				true));
+		String bookCategory = "MGH";
+		when(bookRepository.findByBookPublisher(bookCategory)).thenReturn(book);// Mocking
+		assertEquals(2, bookService.listBookByPublisher(bookCategory).size());
+	}
+	
+	@Test
+	public void listBookByAuthor() {
+		Author author1 = new Author(1, "rishabh", "rishabh@gmail.com", "password", "ROLE_AUTHOR");
+		Book book = new Book(1, "Gandhi lifestories", author1, "Study", 101, "MGH", "26-02-2626", "logo", "desc",
+				"Content", false);
+		List<Book> bookList = new ArrayList<>();
+		bookList.add(book);
+		when(bookRepository.findByBookAuthor(author1)).thenReturn(bookList);// Mocking
+		assertEquals(1, bookService.listBookByAuthor(author1).size());
+	}
+	
+//	@Test
+//	public void createAuthor() {
+//		Author author1 = new Author(1, "rishabh", "rishabh@gmail.com", "password", "ROLE_AUTHOR");
+//		when(authorRepo.save(author1)).thenReturn(author1);
+//		assertEquals(bookService.createAuthor(author1),null);
+//	}
+
+
 	
 }

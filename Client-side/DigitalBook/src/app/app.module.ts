@@ -34,6 +34,7 @@ import { AuthorMybooksComponent } from './Component/author-mybooks/author-mybook
 import { AuthorBlockbookComponent } from './Component/author-blockbook/author-blockbook.component';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ContactFormComponent } from './Contact/contact-form/contact-form.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,7 +63,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReaderHomeComponent,
     AuthorHomeComponent,
     AuthorMybooksComponent,
-    AuthorBlockbookComponent
+    AuthorBlockbookComponent,
+    ContactFormComponent
   ],
   imports: [
     BrowserModule,

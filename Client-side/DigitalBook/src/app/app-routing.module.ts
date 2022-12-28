@@ -19,10 +19,14 @@ import { ReaderLoginComponent } from './Component/reader-login/reader-login.comp
 import { ReaderSearchComponent } from './Component/reader-search/reader-search.component';
 import { ReaderSubscriptionComponent } from './Component/reader-subscription/reader-subscription.component';
 import { RegisterComponent } from './Component/register/register.component';
+import { ContactFormComponent } from './Contact/contact-form/contact-form.component';
 
 const routes: Routes = [
   {
     path:"",component:HomeComponent
+  },
+  {
+    path:"contactus",component:ContactFormComponent
   },
   {
     path:"login",component:ReaderLoginComponent,
